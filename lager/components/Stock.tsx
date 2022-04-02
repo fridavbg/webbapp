@@ -1,5 +1,5 @@
 import { useState, useEffect, Component } from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, View, ScrollView } from "react-native";
 
 import config from "../config/config.json";
 
@@ -23,10 +23,10 @@ function StockList() {
 
 export default function Stock() {
     return (
-        <View>
+        <ScrollView>
             <Text style={styles.title}>Lagerförteckning</Text>
             <StockList />
-        </View>
+        </ScrollView>
     );
 }
 
@@ -35,6 +35,8 @@ const styles = StyleSheet.create({
         color: "#ACD7EC",
         fontSize: 34,
         textAlign: "center",
+        paddingBottom: 12,
+        textDecorationLine: "underline",
     },
     stock: {
         borderWidth: 3,

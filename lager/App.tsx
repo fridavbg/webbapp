@@ -19,7 +19,7 @@ export default function App() {
     const { landscape } = useDeviceOrientation();
     return (
         <SafeAreaView style={styles.container}>
-            <ScrollView style={styles.base}>
+            <View style={styles.base}>
                 <Text
                     style={{
                         color: "#A5C882",
@@ -39,8 +39,8 @@ export default function App() {
                     <Image
                         source={warehouse}
                         style={{
-                            width: landscape ? 350 : 280,
-                            height: landscape ? 150 : 140,
+                            width: landscape ? 450 : 300,
+                            height: landscape ? 300 : 240,
                             margin: 15,
                             borderRadius: 10,
                         }}
@@ -48,7 +48,7 @@ export default function App() {
                 </TouchableOpacity>
                 <Stock />
                 <StatusBar style="auto" />
-            </ScrollView>
+            </View>
         </SafeAreaView>
     );
 }
@@ -57,7 +57,6 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         alignItems: "center",
-        justifyContent: "center",
     },
     base: {
         flex: 1,
