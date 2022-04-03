@@ -1,24 +1,12 @@
 import React from "react";
-import { View, Text, Image, TouchableOpacity, Alert } from "react-native";
+import { View, Image, TouchableOpacity, Alert } from "react-native";
 import { useDeviceOrientation } from "@react-native-community/hooks";
-import warehouse from "../assets/warehouse.jpeg";
+import warehouse from "../assets/images/library.jpg";
 
 export default function Welcome() {
     const { landscape } = useDeviceOrientation();
-
     return (
         <View>
-            <Text
-                style={{
-                    color: "#A5C882",
-                    fontSize: 42,
-                    textAlign: "center",
-                    paddingTop: 15,
-                }}
-                numberOfLines={1}
-            >
-                Lager-Appen
-            </Text>
             <TouchableOpacity
                 onPress={() => {
                     Alert.alert("Image of a", "Warehouse");
