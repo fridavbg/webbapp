@@ -23,10 +23,10 @@ function StockList() {
 
 export default function Stock() {
     return (
-        <ScrollView>
+        <View>
             <Text style={styles.title}>Lagerförteckning</Text>
             <StockList />
-        </ScrollView>
+        </View>
     );
 }
 
