@@ -1,21 +1,53 @@
 import { StatusBar } from "expo-status-bar";
-import { StyleSheet, View } from "react-native";
+import { StyleSheet, ScrollView } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import Welcome from "./components/Welcome";
+// COMPONENTS
+import Home from "./components/Home";
 import Stock from "./components/Stock";
+import Pick from "./components/Pick";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+
+import { NavigationContainer } from "@react-navigation/native";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { Ionicons } from "@expo/vector-icons";
+
+const Tab = createBottomTabNavigator();
 
 export default function App() {
     return (
         <SafeAreaView style={styles.container}>
-            <View style={styles.base}>
-                <Header />
-                <Welcome />
-                <Stock />
-                <Footer />
-                <StatusBar style="auto" />
-            </View>
+            <Header />
+            <NavigationContainer>
+                <Tab.Navigator
+                    screenOptions={({ route }) => ({
+                        tabBarIcon: ({ focused, color, size }) => {
+                            const routeIcons = {
+                                Lager: "home",
+                                Plock: "list",
+                                Stock: "book"
+                            };
+                            let iconName = routeIcons[route.name] || "alert";
+                            return (
+                                <Ionicons
+                                    name={iconName}
+                                    size={size}
+                                    color={color}
+                                />
+                            );
+                        },
+                        tabBarActiveTintColor: "blue",
+                        tabBarInactiveTintColor: "gray",
+                    })}
+                >
+                    <Tab.Screen name="Lager" component={Home} />
+                    <Tab.Screen name="Plock" component={Pick} />
+                    <Tab.Screen name="Stock" component={Stock} />
+                </Tab.Navigator>
+            </NavigationContainer>
+
+            <Footer />
+            <StatusBar style="auto" />
         </SafeAreaView>
     );
 }
@@ -23,14 +55,5 @@ export default function App() {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        alignItems: "center",
-        justifyContent: "center",
-    },
-    base: {
-        flex: 1,
-        backgroundColor: "#4E6766",
-        borderRadius: 10,
-        alignItems: "center",
-        justifyContent: "center",
     },
 });
