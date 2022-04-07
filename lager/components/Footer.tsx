@@ -36,8 +36,8 @@ const styles = StyleSheet.create({
     },
     title: {
         color: "#A5C882",
-        fontSize: 32,
+        fontSize: 24,
         textAlign: "center",
-        fontFamily: "Oswald_400Regular",
+        fontFamily: "Oswald_600SemiBold",
     },
 });

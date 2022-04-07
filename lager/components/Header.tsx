@@ -22,7 +22,7 @@ export default function Header() {
     return (
         <View style={styles.header}>
             <Text style={styles.title} numberOfLines={1}>
-                Lager-Appen
+                Lager-App
             </Text>
         </View>
     );
@@ -36,8 +36,8 @@ const styles = StyleSheet.create({
     },
     title: {
         color: "#A5C882",
-        fontSize: 32,
+        fontSize: 48,
         textAlign: "center",
-        fontFamily: "Oswald_600SemiBold",
+        fontFamily: "Oswald_500Medium",
     },
 });
