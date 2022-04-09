@@ -1,33 +1,16 @@
-import { Text, View, StyleSheet } from 'react-native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
 // COMPONENTS
-import OrderList from './OrderList.tsx';
-import PickList from './PickList.tsx';
-
+import OrderList from "../order/OrderList";
+import PickList from "../plock/PickList";
 
 const Stack = createNativeStackNavigator();
 
 export default function Pick() {
     return (
-        <View style={styles.header}>
-            <Text style={styles.title}>Plocklista</Text>
-        </View>
+        <Stack.Navigator initialRouteName="List">
+            <Stack.Screen name="List" component={OrderList} />
+            <Stack.Screen name="Details" component={PickList} />
+        </Stack.Navigator>
     );
 }
-
-const styles = StyleSheet.create({
-    header: {
-        padding: 15,
-        alignSelf: "stretch",
-        backgroundColor: "#4E6766",
-    },
-    title: {
-        color: "#ACD7EC",
-        fontSize: 32,
-        textAlign: "center",
-        paddingBottom: 12,
-        fontFamily: 'Arvo_Bold',
-        textDecorationLine: "underline",
-    },
-});

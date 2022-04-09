@@ -1,6 +1,8 @@
 import { useState, useEffect, Component } from "react";
-import { StyleSheet, Text, View, ScrollView, FlatList } from "react-native";
+import { Text, View, ScrollView, FlatList } from "react-native";
 import config from "../../config/config.json";
+import { Base, Typography } from '../../styles';
+
 
 function StockList() {
     const [products, setProducts] = useState([]);
@@ -12,7 +14,7 @@ function StockList() {
     }, []);
 
     const list = products.map((product, index) => (
-        <Text key={index} style={styles.stock}>
+        <Text key={index} style={Base.listItem}>
             {product.name} - {product.stock}
         </Text>
     ));
@@ -22,36 +24,9 @@ function StockList() {
 
 export default function Stock() {
     return (
-        <ScrollView style={styles.container}>
-            <Text style={styles.title}>Lagerförteckning</Text>
+        <ScrollView style={Base.container}>
+            <Text style={Typography.title}>Lagerförteckning</Text>
             <StockList />
         </ScrollView>
     );
 }
-
-const styles = StyleSheet.create({
-    container: {
-        paddingLeft: 8,
-        paddingRight: 8,
-        backgroundColor: "#4E6766",
-    },
-    title: {
-        color: "#ACD7EC",
-        fontSize: 34,
-        textAlign: "center",
-        margin: 20,
-        textDecorationLine: "underline",
-        fontFamily: 'Arvo_Bold'
-    },
-    stock: {
-        borderWidth: 3,
-        borderStyle: "solid",
-        borderRadius: 10,
-        fontSize: 20,
-        marginBottom: 5,
-        padding: 8,
-        textAlign: "center",
-        color: "#ACD7EC",
-        fontFamily: 'Arvo'
-    },
-});

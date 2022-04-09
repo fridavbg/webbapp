@@ -1,26 +1,14 @@
 import React from "react";
-import { StyleSheet, View, Text } from "react-native";
+import { View, Text } from "react-native";
+import { Base, Typography } from '../../styles';
 
 export default function Header() {
     return (
-        <View style={styles.header}>
-            <Text style={styles.title} numberOfLines={1}>
+        <View style={Base.header}>
+            <Text style={Typography.header1} numberOfLines={1}>
                 Lager-App
             </Text>
         </View>
     );
 }
 
-const styles = StyleSheet.create({
-    header: {
-        padding: 15,
-        alignSelf: "stretch",
-        backgroundColor: "#241623",
-    },
-    title: {
-        color: "#A5C882",
-        fontSize: 48,
-        textAlign: "center",
-        fontFamily: 'Arvo_Bold'
-    },
-});
