@@ -21,5 +21,6 @@ const styles = StyleSheet.create({
         color: "#A5C882",
         fontSize: 24,
         textAlign: "center",
+        fontFamily: 'Arvo_Italic'
     },
 });

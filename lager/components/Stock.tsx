@@ -41,15 +41,17 @@ const styles = StyleSheet.create({
         textAlign: "center",
         paddingBottom: 12,
         textDecorationLine: "underline",
+        fontFamily: 'Arvo_Bold'
     },
     stock: {
         borderWidth: 3,
         borderStyle: "solid",
         borderRadius: 10,
         fontSize: 20,
-        color: "#D6EDFF",
         marginBottom: 5,
         padding: 8,
         textAlign: "center",
+        color: "#ACD7EC",
+        fontFamily: 'Arvo'
     },
 });

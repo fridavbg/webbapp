@@ -16,9 +16,11 @@ const styles = StyleSheet.create({
         backgroundColor: "#4E6766",
     },
     title: {
-        color: "#A5C882",
+        color: "#ACD7EC",
         fontSize: 32,
         textAlign: "center",
         paddingBottom: 12,
+        fontFamily: 'Arvo_Bold',
+        textDecorationLine: "underline",
     },
 });
