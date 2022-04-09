@@ -1,5 +1,12 @@
-// Pick.tsx
 import { Text, View, StyleSheet } from 'react-native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+
+// COMPONENTS
+import OrderList from './OrderList.tsx';
+import PickList from './PickList.tsx';
+
+
+const Stack = createNativeStackNavigator();
 
 export default function Pick() {
     return (

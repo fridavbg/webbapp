@@ -7,7 +7,7 @@ import {
     Alert,
 } from "react-native";
 import { useDeviceOrientation } from "@react-native-community/hooks";
-import warehouse from "../assets/images/library.jpg";
+import warehouse from "../../assets/images/library.jpg";
 
 export default function Home() {
     const { landscape } = useDeviceOrientation();

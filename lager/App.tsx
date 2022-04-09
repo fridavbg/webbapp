@@ -9,11 +9,11 @@ import AppLoading from "expo-app-loading";
 import * as Font from "expo-font";
 
 // COMPONENTS
-import Home from "./components/Home";
-import Stock from "./components/Stock";
-import Pick from "./components/Pick";
-import Header from "./components/Header";
-import Footer from "./components/Footer";
+import Home from "./components/incl/Home";
+import Stock from "./components/stock/Stock";
+import Pick from "./components/plock/Pick";
+import Header from "./components/incl/Header";
+import Footer from "./components/incl/Footer";
 const Tab = createBottomTabNavigator();
 
 export default function App() {
@@ -43,11 +43,12 @@ export default function App() {
             background: "#4E6766",
         },
     };
-    
+
     return (
         <SafeAreaView style={styles.container}>
-            <Header />
             <NavigationContainer theme={MyTheme}>
+                <Header />
+
                 <Tab.Navigator
                     screenOptions={({ route }) => ({
                         tabBarIcon: ({ focused, color, size }) => {
@@ -73,9 +74,8 @@ export default function App() {
                     <Tab.Screen name="Plock" component={Pick} />
                     <Tab.Screen name="Stock" component={Stock} />
                 </Tab.Navigator>
+                <Footer />
             </NavigationContainer>
-
-            <Footer />
             <StatusBar style="auto" />
         </SafeAreaView>
     );
