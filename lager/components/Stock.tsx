@@ -1,14 +1,5 @@
 import { useState, useEffect, Component } from "react";
 import { StyleSheet, Text, View, ScrollView, FlatList } from "react-native";
-import {
-    useFonts,
-    Oswald_200ExtraLight,
-    Oswald_300Light,
-    Oswald_400Regular,
-    Oswald_500Medium,
-    Oswald_600SemiBold,
-    Oswald_700Bold,
-} from "@expo-google-fonts/oswald";
 import config from "../config/config.json";
 
 function StockList() {
@@ -30,14 +21,6 @@ function StockList() {
 }
 
 export default function Stock() {
-    let [fontsLoaded] = useFonts({
-        Oswald_200ExtraLight,
-        Oswald_300Light,
-        Oswald_400Regular,
-        Oswald_500Medium,
-        Oswald_600SemiBold,
-        Oswald_700Bold,
-    });
     return (
         <ScrollView style={styles.container}>
             <Text style={styles.title}>Lagerförteckning</Text>
@@ -58,7 +41,6 @@ const styles = StyleSheet.create({
         textAlign: "center",
         paddingBottom: 12,
         textDecorationLine: "underline",
-        fontFamily: "Oswald_700Bold",
     },
     stock: {
         borderWidth: 3,
@@ -69,6 +51,5 @@ const styles = StyleSheet.create({
         marginBottom: 5,
         padding: 8,
         textAlign: "center",
-        fontFamily: "Oswald_500Medium",
     },
 });

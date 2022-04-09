@@ -2,29 +2,16 @@ import React, { useEffect } from "react";
 import { View, Image, Text, StyleSheet, TouchableOpacity, Alert } from "react-native";
 import { useDeviceOrientation } from "@react-native-community/hooks";
 import warehouse from "../assets/images/library.jpg";
-import {
-    useFonts,
-    Oswald_200ExtraLight,
-    Oswald_300Light,
-    Oswald_400Regular,
-    Oswald_500Medium,
-    Oswald_600SemiBold,
-    Oswald_700Bold,
-} from "@expo-google-fonts/oswald";
+
 
 export default function Home() {
-    let [fontsLoaded] = useFonts({
-        Oswald_200ExtraLight,
-        Oswald_300Light,
-        Oswald_400Regular,
-        Oswald_500Medium,
-        Oswald_600SemiBold,
-        Oswald_700Bold,
-    });
     const { landscape } = useDeviceOrientation();
     return (
         <View style={styles.header}>
             <Text style={styles.title}>Welcome</Text>
+            <Text style={styles.title1}>Welcome</Text>
+            <Text style={styles.title2}>Welcome</Text>
+            <Text style={styles.title3}>Welcome</Text>
             <TouchableOpacity
                 onPress={() => {
                     Alert.alert("Image of a", "Warehouse");
@@ -57,6 +44,23 @@ const styles = StyleSheet.create({
         fontSize: 32,
         textAlign: "center",
         paddingBottom: 12,
-        fontFamily: "Oswald_600SemiBold",
+    },
+    title1: {
+        color: "#A5C882",
+        fontSize: 32,
+        textAlign: "center",
+        paddingBottom: 12,
+    },
+    title2: {
+        color: "#A5C882",
+        fontSize: 32,
+        textAlign: "center",
+        paddingBottom: 12,
+    },
+    title3: {
+        color: "#A5C882",
+        fontSize: 32,
+        textAlign: "center",
+        paddingBottom: 12,
     },
 });

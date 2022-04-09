@@ -1,17 +1,16 @@
 import { StatusBar } from "expo-status-bar";
 import { StyleSheet, ScrollView } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
+import { NavigationContainer } from "@react-navigation/native";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { Ionicons } from "@expo/vector-icons";
+
 // COMPONENTS
 import Home from "./components/Home";
 import Stock from "./components/Stock";
 import Pick from "./components/Pick";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
-
-import { NavigationContainer } from "@react-navigation/native";
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { Ionicons } from "@expo/vector-icons";
-
 const Tab = createBottomTabNavigator();
 
 export default function App() {

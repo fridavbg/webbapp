@@ -19,7 +19,6 @@ const styles = StyleSheet.create({
         color: "#A5C882",
         fontSize: 32,
         textAlign: "center",
-        fontFamily: "Oswald_500Medium",
         paddingBottom: 12,
     },
 });
