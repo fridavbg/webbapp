@@ -39,7 +39,7 @@ const styles = StyleSheet.create({
         color: "#ACD7EC",
         fontSize: 34,
         textAlign: "center",
-        paddingBottom: 12,
+        margin: 20,
         textDecorationLine: "underline",
         fontFamily: 'Arvo_Bold'
     },
