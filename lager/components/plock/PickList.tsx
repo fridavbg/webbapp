@@ -1,13 +1,22 @@
+import { useEffect, useState } from "react";
 import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
-import orderModel from "../../models/orders";
 import { Base, Typography } from "../../styles";
+
+import orderModel from '../../models/orders';
+import productModel from '../../models/products';
 
 export default function PickList({ route, navigation }) {
     const { order } = route.params;
+    const [products, setProducts] = useState([]);
+
+    useEffect(async () => {
+        setProducts(await productModel.getProducts());
+    }, []);
+
 
     async function pick() {
         await orderModel.pickOrder(order);
-        navigation.navigate("List");
+        navigation.navigate("List"), { reload: true};
     }
 
     const orderItemsList = order.order_items.map((item, index) => {
@@ -19,14 +28,14 @@ export default function PickList({ route, navigation }) {
     });
 
     return (
-        <View style={ Base.container}>
+        <View style={Base.container}>
             <Text style={Typography.text}>{order.name}</Text>
-            <Text style={ Typography.text}>{order.address}</Text>
-            <Text style={ Typography.text}>
+            <Text style={Typography.text}>{order.address}</Text>
+            <Text style={Typography.text}>
                 {order.zip} {order.city}
             </Text>
 
-            <Text style={ Typography.text}>Produkter:</Text>
+            <Text style={Typography.text}>Produkter:</Text>
 
             {orderItemsList}
             <TouchableOpacity

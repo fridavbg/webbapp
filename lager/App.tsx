@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import { StatusBar } from "expo-status-bar";
-import { StyleSheet, ScrollView } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { NavigationContainer, DefaultTheme } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Ionicons } from "@expo/vector-icons";
 import AppLoading from "expo-app-loading";
 import * as Font from "expo-font";
+import { Base, Typography } from "./styles";
 
 // COMPONENTS
 import Home from "./components/incl/Home";
@@ -45,10 +45,9 @@ export default function App() {
     };
 
     return (
-        <SafeAreaView style={styles.container}>
+        <SafeAreaView style={Base.container}>
             <NavigationContainer theme={MyTheme}>
                 <Header />
-
                 <Tab.Navigator
                     screenOptions={({ route }) => ({
                         tabBarIcon: ({ focused, color, size }) => {
@@ -80,9 +79,3 @@ export default function App() {
         </SafeAreaView>
     );
 }
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-    },
-});
