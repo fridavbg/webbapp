@@ -5,8 +5,8 @@ import { Base, Typography } from '../../styles';
 export default function Header() {
     return (
         <View style={Base.header}>
-            <Text style={Typography.header1} numberOfLines={1}>
-                Lager-App
+            <Text style={Typography.header1}>
+                Warehouse App
             </Text>
         </View>
     );

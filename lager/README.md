@@ -15,11 +15,11 @@ expo start
 
 - [x] Skapa en vy där lagerarbetarna ser alla ordrar redo för att packas, dvs. ordrar med status ny. Från order-vyn kan man ta sig till plocklista vyn.
 
-- [] Plocklista vyn visar alla varor i en order, hur många som ska plockas och vart varan finns.
+- [x] Plocklista vyn visar alla varor i en order, hur många som ska plockas och vart varan finns.
 
 - [] Gör en kontroll om det finns tillräckligt många av varan för att den kan packas.
 
-- [] Om det finns tillräckligt många produkter ska det finnas en möjlighet att byta status för ordern med en knapp. Byt till status Packad.
+- [x] Om det finns tillräckligt många produkter ska det finnas en möjlighet att byta status för ordern med en knapp. Byt till status Packad.
 
 - [] När status för ordern ändras måste även lagersaldot för de packade varorna minskas.
 

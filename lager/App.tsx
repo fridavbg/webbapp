@@ -17,24 +17,25 @@ import Footer from "./components/incl/Footer";
 const Tab = createBottomTabNavigator();
 
 export default function App() {
-    const fetchFonts = async () =>
-        await Font.loadAsync({
-            Architects_Daughter: require("./assets/fonts/Architects_Daughter/ArchitectsDaughter-Regular.ttf"),
-            Arvo: require("./assets/fonts/Arvo/Arvo-Regular.ttf"),
-            Arvo_Bold: require("./assets/fonts/Arvo/Arvo-Bold.ttf"),
-            Arvo_Italic: require("./assets/fonts/Arvo/Arvo-Italic.ttf"),
-        });
-    const [dataLoaded, setDataLoaded] = useState(false);
+    // TA IN FONTS 
+    // const fetchFonts = async () =>
+    //     await Font.loadAsync({
+    //         Architects_Daughter: require("./assets/fonts/Architects_Daughter/ArchitectsDaughter-Regular.ttf"),
+    //         Arvo: require("./assets/fonts/Arvo/Arvo-Regular.ttf"),
+    //         Arvo_Bold: require("./assets/fonts/Arvo/Arvo-Bold.ttf"),
+    //         Arvo_Italic: require("./assets/fonts/Arvo/Arvo-Italic.ttf"),
+    //     });
+    // const [dataLoaded, setDataLoaded] = useState(false);
 
-    if (!dataLoaded) {
-        return (
-            <AppLoading
-                startAsync={fetchFonts}
-                onFinish={() => setDataLoaded(true)}
-                onError={(err) => console.log(err)}
-            />
-        );
-    }
+    // if (!dataLoaded) {
+    //     return (
+    //         <AppLoading
+    //             startAsync={fetchFonts}
+    //             onFinish={() => setDataLoaded(true)}
+    //             onError={(err) => console.log(err)}
+    //         />
+    //     );
+    // }
 
     const MyTheme = {
         ...DefaultTheme,
@@ -44,6 +45,9 @@ export default function App() {
         },
     };
 
+    // LIFTING STATE - Products
+    const [products, setProducts] = useState([]);
+    
     return (
         <SafeAreaView style={Base.container}>
             <NavigationContainer theme={MyTheme}>
@@ -71,7 +75,14 @@ export default function App() {
                 >
                     <Tab.Screen name="Lager" component={Home} />
                     <Tab.Screen name="Plock" component={Pick} />
-                    <Tab.Screen name="Stock" component={Stock} />
+                    <Tab.Screen name="Stock">
+                        {() => (
+                            <Stock
+                                products={products}
+                                setProducts={setProducts}
+                            />
+                        )}
+                    </Tab.Screen>
                 </Tab.Navigator>
                 <Footer />
             </NavigationContainer>
