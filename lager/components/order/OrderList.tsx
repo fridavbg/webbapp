@@ -1,15 +1,22 @@
 import { useState, useEffect } from "react";
-import { View, Text, Button, TouchableOpacity } from "react-native";
-import config from "../../config/config.json";
+import { View, Text, TouchableOpacity, ScrollView } from "react-native";
+import orderModel from '../../models/orders';
 import { Base, Typography } from "../../styles";
 
-export default function OrderList({ navigation }) {
+export default function OrderList({ route, navigation }) {
+    const { reload } = route.params || false;
     const [allOrders, setAllOrders] = useState([]);
 
+    if (reload) {
+        reloadOrders();
+    }
+
+    async function reloadOrders() {
+        setAllOrders(await orderModel.getOrders());
+    }
+
     useEffect(() => {
-        fetch(`${config.base_url}/orders?api_key=${config.api_key}`)
-            .then((response) => response.json())
-            .then((result) => setAllOrders(result.data));
+        reloadOrders();
     }, []);
 
     const listOfOrders = allOrders
@@ -31,9 +38,11 @@ export default function OrderList({ navigation }) {
         });
 
     return (
-        <View>
-            <Text style={Typography.title}>Ordrar redo att plockas</Text>
-            {listOfOrders}
-        </View>
+        <ScrollView>
+            <View>
+                <Text style={Typography.title}>Ordrar redo att plockas</Text>
+                {listOfOrders}
+            </View>
+        </ScrollView>
     );
 }

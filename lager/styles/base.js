@@ -21,8 +21,8 @@ export const listItem = {
     borderStyle: "solid",
     borderRadius: 10,
     fontSize: 20,
-    marginBottom: 5,
-    padding: 8,
+    padding: 15,
+    margin: 10,
     color: "#ACD7EC",
     fontFamily: "Arvo",
     textAlign: "center",
@@ -32,14 +32,14 @@ export const button = {
     borderWidth: 3,
     borderStyle: "solid",
     borderRadius: 10,
+    backgroundColor: "#ACD7EC",
     margin: 5,
     padding: 8,
-    color: "#ACD7EC",
     fontFamily: "Arvo",
 };
 
 export const image = {
-    width: 450,
-    height: 240,
+    width: 300,
+    height: 300,
     borderRadius: 10,
 };
