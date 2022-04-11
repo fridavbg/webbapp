@@ -6,20 +6,22 @@ import orderModel from "../../models/orders";
 import productModel from "../../models/products";
 
 export default function PickList({ route, navigation, setProducts }) {
-    const { reload } = route.params || false;
+    // const { reload } = route.params || false;
+    // if (reload) {
+    //     reloadProducts();
+    // }
+
+    // async function reloadProducts() {
+    //     setProducts(await productModel.getProducts());
+    // }
+
+    // useEffect(() => {
+    //     reloadProducts();
+    // }, []);
     const { order } = route.params;
-    const [allOrders, setAllOrders] = useState([]);
 
-    if (reload) {
-        reloadProducts();
-    }
-
-    async function reloadProducts() {
+    useEffect(async () => {
         setProducts(await productModel.getProducts());
-    }
-
-    useEffect(() => {
-        reloadProducts();
     }, []);
 
     async function pick() {

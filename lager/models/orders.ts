@@ -3,15 +3,17 @@ import config from "../config/config.json";
 import products from './products';
 
 import Order from '../interfaces/order';
-import OrderItem from '../interfaces/order_item';
+// import OrderItem from '../interfaces/order_item';
 
 const orders = {
+
     getOrders: async function getOrders(): Promise<Order[]> {
         const response = await fetch(`${config.base_url}/orders?api_key=${config.api_key}`);
         const result = await response.json();
 
         return result.data;
     },
+
     pickOrder: async function pickOrder(order: Partial<Order>) {
         // TODO: Minska lagersaldo för de orderrader som finns i ordern
         await Promise.all(order.order_items.map(async (order_item: Partial<Order>) => { 
@@ -32,6 +34,7 @@ const orders = {
         };
         await orders.updateOrder(changedOrder)
     },
+    
     updateOrder: async function updateOrder(order: Partial<Order>) {
         try {
             await fetch(`${config.base_url}/orders?api_key=${config.api_key}`, {

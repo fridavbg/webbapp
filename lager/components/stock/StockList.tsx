@@ -11,9 +11,10 @@ export default function StockList({ products, setProducts }) {
 
     const list = products.map((product, index) => (
         <Text key={index} style={Base.listItem}>
-            ID: {product.id} {"\n"}
-            BOOKNAME: {product.name} {"\n"}
-            AMOUNT: {product.stock}
+            ID:
+            {"\n"} {product.id} {"\n"}
+            BOOKNAME:  {"\n"} {product.name} {"\n"}
+            AMOUNT:  {"\n"} {product.stock}
         </Text>
     ));
 

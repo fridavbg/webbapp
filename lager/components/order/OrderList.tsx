@@ -32,7 +32,11 @@ export default function OrderList({ route, navigation }) {
                         });
                     }}
                 >
-                    <Text style={Typography.btnText}>{ order.id} - {order.name}</Text>
+                    <Text style={Typography.btnText}>
+                        ID: {order.id} {"\n"}
+                        NAME: {order.name} {"\n"}
+                        STATUS: { order.status }
+                    </Text>
                 </TouchableOpacity>
             );
         });

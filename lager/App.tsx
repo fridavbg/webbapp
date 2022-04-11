@@ -11,15 +11,16 @@ import { Base, Typography } from "./styles";
 // COMPONENTS
 import Home from "./components/incl/Home";
 import Stock from "./components/stock/Stock";
-import Pick from "./components/plock/Pick";
+import Plock from "./components/plock/Pick";
 import Header from "./components/incl/Header";
 import Footer from "./components/incl/Footer";
 const Tab = createBottomTabNavigator();
 
 export default function App() {
+    // LIFTING STATE - Products
     const [products, setProducts] = useState([]);
 
-    // TA IN FONTS 
+    // TA IN FONTS
     const fetchFonts = async () =>
         await Font.loadAsync({
             Architects_Daughter: require("./assets/fonts/Architects_Daughter/ArchitectsDaughter-Regular.ttf"),
@@ -39,6 +40,7 @@ export default function App() {
         );
     }
 
+    // NAVBAR TEMA
     const MyTheme = {
         ...DefaultTheme,
         colors: {
@@ -47,8 +49,12 @@ export default function App() {
         },
     };
 
-    // LIFTING STATE - Products
-    
+    const routeIcons = {
+        Lager: "home",
+        Plock: "list",
+        Stock: "book",
+    };
+
     return (
         <SafeAreaView style={Base.container}>
             <NavigationContainer theme={MyTheme}>
@@ -56,11 +62,6 @@ export default function App() {
                 <Tab.Navigator
                     screenOptions={({ route }) => ({
                         tabBarIcon: ({ focused, color, size }) => {
-                            const routeIcons = {
-                                Lager: "home",
-                                Plock: "list",
-                                Stock: "book",
-                            };
                             let iconName = routeIcons[route.name] || "alert";
                             return (
                                 <Ionicons
@@ -70,18 +71,13 @@ export default function App() {
                                 />
                             );
                         },
-                        tabBarActiveTintColor: "blue",
+                        tabBarActiveTintColor: "#ACD7EC",
                         tabBarInactiveTintColor: "gray",
                     })}
                 >
-                    <Tab.Screen name="Lager" component={Home} />
+                    <Tab.Screen name="Lager">{() => <Home />}</Tab.Screen>
                     <Tab.Screen name="Plock">
-                        {() => (
-                            <Pick
-                                products={products}
-                                setProducts={setProducts}
-                            />
-                        )}
+                        {() => <Plock setProducts={setProducts} />}
                     </Tab.Screen>
                     <Tab.Screen name="Stock">
                         {() => (
