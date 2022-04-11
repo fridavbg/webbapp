@@ -1,7 +1,6 @@
 import { useEffect } from "react";
 
 import { Text, ScrollView } from "react-native";
-import config from "../../config/config.json";
 import { Base, Typography } from "../../styles";
 
 import StockList from "./StockList";

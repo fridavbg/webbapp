@@ -5,10 +5,11 @@ import { Base, Typography } from "../../styles";
 import orderModel from '../../models/orders';
 
 export default function OrderList({ route, navigation }) {
-    const { reload } = route.params || false;
+    const { reload } = route.params || true;
     const [allOrders, setAllOrders] = useState([]);
 
     if (reload) {
+        console.log('RELOAD'); 
         reloadOrders();
     }
 

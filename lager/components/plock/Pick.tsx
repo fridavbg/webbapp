@@ -8,8 +8,7 @@ import productModel from "../../models/products";
 
 const Stack = createNativeStackNavigator();
 
-export default function Pick({setProducts, products}) {
-    
+export default function Pick({ setProducts, products }) {
     useEffect(async () => {
         setProducts(await productModel.getProducts());
     }, []);
@@ -20,7 +19,13 @@ export default function Pick({setProducts, products}) {
                 {(screenProps) => <OrderList {...screenProps} />}
             </Stack.Screen>
             <Stack.Screen name="Details">
-                {(screenProps) => <PickList {...screenProps} setProducts={setProducts} products={products} />}
+                {(screenProps) => (
+                    <PickList
+                        {...screenProps}
+                        setProducts={setProducts}
+                        products={products}
+                    />
+                )}
             </Stack.Screen>
         </Stack.Navigator>
     );

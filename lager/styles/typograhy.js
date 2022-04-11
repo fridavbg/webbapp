@@ -39,3 +39,15 @@ export const btnText = {
     fontSize: 20,
     color: "#241623",
 };
+
+export const errMsg = {
+    textAlign: "center",
+    fontSize: 20,
+    borderWidth: 3,
+    borderStyle: "solid",
+    borderRadius: 10,
+    color: "darkred",
+    borderColor: "darkred",
+    textTransform: "uppercase",
+    padding: 12,
+};

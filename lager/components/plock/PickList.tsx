@@ -17,7 +17,7 @@ export default function PickList({ route, navigation, setProducts, products }) {
 
     const orderItemsList = order.order_items.map((item, index) => {
         if (item.amount > item.stock) {
-            inStock = false;
+            inStock = false
         }
         return (
             <Text key={index} style={Base.listItem}>
