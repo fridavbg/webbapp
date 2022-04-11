@@ -8,6 +8,19 @@ import productModel from "../../models/products";
 export default function PickList({ route, navigation, setProducts, products }) {
     const { order } = route.params;
     let inStock = true;
+    const { reload } = route.params || true;
+    const [allOrders, setAllOrders] = useState([]);
+
+    if (reload) {
+        console.log('RELOAD'); 
+        reloadOrders();
+    }
+    async function reloadOrders() {
+        setAllOrders(await orderModel.getOrders());
+    }
+    useEffect(() => {
+        reloadOrders();
+    }, []);
 
     async function pickOrder() {
         await orderModel.pickOrder(order);
@@ -62,7 +75,7 @@ export default function PickList({ route, navigation, setProducts, products }) {
                 <Text style={Typography.text}>Produkter:</Text>
                 {orderItemsList}
                 {products.amount}
-                <Text style={Typography.btnText}>Out of stock</Text>
+                <Text style={Typography.errMsg}>Out of stock</Text>
             </View>
         </ScrollView>
     );

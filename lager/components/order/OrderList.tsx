@@ -12,11 +12,9 @@ export default function OrderList({ route, navigation }) {
         console.log('RELOAD'); 
         reloadOrders();
     }
-
     async function reloadOrders() {
         setAllOrders(await orderModel.getOrders());
     }
-
     useEffect(() => {
         reloadOrders();
     }, []);
