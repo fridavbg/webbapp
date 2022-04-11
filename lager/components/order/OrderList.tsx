@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
 import { View, Text, TouchableOpacity, ScrollView } from "react-native";
-import orderModel from '../../models/orders';
 import { Base, Typography } from "../../styles";
+
+import orderModel from '../../models/orders';
 
 export default function OrderList({ route, navigation }) {
     const { reload } = route.params || false;

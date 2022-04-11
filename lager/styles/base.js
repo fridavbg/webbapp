@@ -26,6 +26,7 @@ export const listItem = {
     color: "#ACD7EC",
     fontFamily: "Arvo",
     textAlign: "center",
+    backgroundColor: "#241623",
 };
 
 export const button = {

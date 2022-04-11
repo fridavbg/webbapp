@@ -37,5 +37,5 @@ export const text = {
 export const btnText = {
     textAlign: "center",
     fontSize: 20,
-    color: "#4E6766",
+    color: "#241623",
 };

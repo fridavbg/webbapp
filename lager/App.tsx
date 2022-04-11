@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { StatusBar } from "expo-status-bar";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { NavigationContainer, DefaultTheme } from "@react-navigation/native";
@@ -77,7 +77,12 @@ export default function App() {
                 >
                     <Tab.Screen name="Lager">{() => <Home />}</Tab.Screen>
                     <Tab.Screen name="Plock">
-                        {() => <Plock setProducts={setProducts} />}
+                        {() => (
+                            <Plock
+                                products={products}
+                                setProducts={setProducts}
+                            />
+                        )}
                     </Tab.Screen>
                     <Tab.Screen name="Stock">
                         {() => (

@@ -21,7 +21,7 @@ expo start
 
 - [x] Om det finns tillräckligt många produkter ska det finnas en möjlighet att byta status för ordern med en knapp. Byt till status Packad.
 
-- [] När status för ordern ändras måste även lagersaldot för de packade varorna minskas.
+- [x] När status för ordern ändras måste även lagersaldot för de packade varorna minskas.
 
 - [x] Navigationen ska tydligt visa vilken vy användaren är i.
 
