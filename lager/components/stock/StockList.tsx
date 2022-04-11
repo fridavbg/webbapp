@@ -1,20 +1,21 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { Text, View } from "react-native";
-import { Base } from '../../styles';
+import { Base } from "../../styles";
 
-import productModel from '../../models/products';
+import productModel from "../../models/products";
 
-export default function StockList({products, setProducts}) {
+export default function StockList({ products, setProducts }) {
     useEffect(async () => {
-            setProducts(await productModel.getProducts())
+        setProducts(await productModel.getProducts());
     }, []);
 
     const list = products.map((product, index) => (
         <Text key={index} style={Base.listItem}>
-            {product.name} - {product.stock}
+            ID: {product.id} {"\n"}
+            BOOKNAME: {product.name} {"\n"}
+            AMOUNT: {product.stock}
         </Text>
     ));
 
     return <View>{list}</View>;
 }
-

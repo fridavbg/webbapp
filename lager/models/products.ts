@@ -1,7 +1,7 @@
 import config from "../config/config.json";
 
 const orders = {
-    getProducts: async function getProducts() {
+    getProducts: async function getProducts(): Promise<Products[]> {
         const response = await fetch(
             `${config.base_url}/products?api_key=${config.api_key}`
         );

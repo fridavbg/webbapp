@@ -6,11 +6,13 @@ import PickList from "../plock/PickList";
 
 const Stack = createNativeStackNavigator();
 
-export default function Pick() {
+export default function Pick({route, navigation, setProducts, products}) {
     return (
-        <Stack.Navigator initialRouteName="List">
+        <Stack.Navigator initialRouteName="OrderList">
             <Stack.Screen name="OrderList" component={OrderList} />
-            <Stack.Screen name="Details" component={PickList} />
+            <Stack.Screen name="Details">
+                {() => <PickList setProducts={setProducts} />}
+            </Stack.Screen>
         </Stack.Navigator>
     );
 }

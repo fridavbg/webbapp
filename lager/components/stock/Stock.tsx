@@ -4,7 +4,7 @@ import { Base, Typography } from "../../styles";
 
 import StockList from "./StockList";
 
-export default function Stock({products, setProducts}) {
+export default function Stock({ products, setProducts}) {
     return (
         <ScrollView style={Base.container}>
             <Text style={Typography.title}>Lagerförteckning</Text>

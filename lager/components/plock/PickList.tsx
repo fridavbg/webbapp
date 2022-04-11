@@ -1,21 +1,25 @@
 import { useEffect, useState } from "react";
-import {
-    View,
-    Text,
-    TouchableOpacity,
-    ScrollView,
-} from "react-native";
+import { View, Text, TouchableOpacity, ScrollView } from "react-native";
 import { Base, Typography } from "../../styles";
 
 import orderModel from "../../models/orders";
 import productModel from "../../models/products";
 
-export default function PickList({ route, navigation }) {
+export default function PickList({ route, navigation, setProducts }) {
+    const { reload } = route.params || false;
     const { order } = route.params;
-    const [products, setProducts] = useState([]);
+    const [allOrders, setAllOrders] = useState([]);
 
-    useEffect(async () => {
+    if (reload) {
+        reloadProducts();
+    }
+
+    async function reloadProducts() {
         setProducts(await productModel.getProducts());
+    }
+
+    useEffect(() => {
+        reloadProducts();
     }, []);
 
     async function pick() {
@@ -45,15 +49,10 @@ export default function PickList({ route, navigation }) {
                 <Text style={Typography.text}>Produkter:</Text>
                 {orderItemsList}
                 {/* BUTTON */}
-                <TouchableOpacity
-                    style={Base.button}
-                    onPress={pick}
-                >
-                    <Text style={Typography.btnText}
-                    >Plocka order</Text>
+                <TouchableOpacity style={Base.button} onPress={pick}>
+                    <Text style={Typography.btnText}>Plocka order</Text>
                 </TouchableOpacity>
             </View>
         </ScrollView>
     );
 }
-
