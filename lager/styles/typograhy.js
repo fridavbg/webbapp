@@ -51,3 +51,11 @@ export const errMsg = {
     textTransform: "uppercase",
     padding: 12,
 };
+
+export const label = {
+    fontWeight: "bold",
+    margin: 2,
+    flex: 1,
+    fontSize: 20,
+    fontFamily: "Arvo_Bold",
+};

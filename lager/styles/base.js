@@ -34,7 +34,7 @@ export const button = {
     borderStyle: "solid",
     borderRadius: 10,
     backgroundColor: "#ACD7EC",
-    margin: 5,
+    marginBottom: 15,
     padding: 8,
     fontFamily: "Arvo",
 };

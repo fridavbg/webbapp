@@ -42,7 +42,7 @@ export default function DeliveriesList({ route, navigation }) {
 
     return (
         <ScrollView>
-            <View style={Base.base}>
+            <View style={Base.container}>
                 <Text style={Typography.title}>Inleveranser</Text>
                 {listOfDeliveries}
                 <TouchableOpacity

@@ -1,6 +1,6 @@
 // components/DeliveryForm.tsx
 import { useState } from "react";
-import { ScrollView, Text, TextInput, Button } from "react-native";
+import { ScrollView, Text, TextInput, Button, TouchableOpacity } from "react-native";
 import { Base, Typography, Form } from "../../styles";
 
 import Delivery from "../interfaces/delivery";
@@ -9,8 +9,8 @@ export default function DeliveryForm({ navigation }) {
     const [delivery, setDelivery] = useState<Partial<Delivery>>({});
 
     return (
-        <ScrollView style={{ ...Base.base }}>
-            <Text style={{ ...Typography.header2 }}>Ny inleverans</Text>
+        <ScrollView style={{ ...Base.container }}>
+            <Text style={{ ...Typography.title }}>Ny inleverans</Text>
 
             <Text style={{ ...Typography.label }}>Kommentar</Text>
             <TextInput
@@ -21,12 +21,15 @@ export default function DeliveryForm({ navigation }) {
                 value={delivery?.comment}
             />
 
-            <Button
-                title="Gör inleverans"
+            <TouchableOpacity
+                style={{...Base.button}}
                 onPress={() => {
-                    addDelivery();
-                }}
-            />
+                addDelivery();
+                }}>
+                <Text style={{ ...Typography.btnText }}>
+                    Gör inleverans
+                </Text>
+            </TouchableOpacity>             
         </ScrollView>
     );
 }
