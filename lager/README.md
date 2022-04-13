@@ -11,22 +11,26 @@
 expo start
 ```
 
-# Krav - Kmom02
+# Krav - Kmom03
 
-- [x] Skapa en vy där lagerarbetarna ser alla ordrar redo för att packas, dvs. ordrar med status ny. Från order-vyn kan man ta sig till plocklista vyn.
+- [] Lista alla tidigare inleveranser, om det inte finns inleveranser visa upp ett meddelande om detta.
 
-- [x] Plocklista vyn visar alla varor i en order, hur många som ska plockas och vart varan finns.
+- [] Gör en knapp för ‘Ny inleverans’ i list-vyn denna ska ta användaren till ett formulär.
 
-- [x] Gör en kontroll om det finns tillräckligt många av varan för att den kan packas.
+- [] Använd dina kunskapar i att göra ett lättanvänd formulär där man kan göra inleverans av en produkt.
 
-- [x] Om det finns tillräckligt många produkter ska det finnas en möjlighet att byta status för ordern med en knapp. Byt till status Packad.
+- [] Formuläret ska innehålla alla attribut för en inleverans förutom Leverans ID (id) dvs.:
 
-- [x] När status för ordern ändras måste även lagersaldot för de packade varorna minskas.
+    - Produkt (product_id)
+    - Antal (amount)
+    - Leveransdatum (delivery_date)
+    - Kommentar (comment)
+    - Använd en Picker-komponent för att välja produkten som har levererats.
 
-- [x] Navigationen ska tydligt visa vilken vy användaren är i.
+- [] Använd en DatePicker-komponent för att välja leveransdatum.
 
-- [x] Strukturera din style kod, så vi inte längre har styling direkt i komponenterna, men i egna filer.
+- [] När formuläret skickas ska det skapas en inleverans i API:t.
 
-- [x] Se till att det går att testa din app. Lägg till minst en order med en produkt som går att packa.
+- [] Lagersaldot för produkten ska ökas med den levererade mängden.
 
 - [] Länka till ditt GitHub-repo som en del av din inlämning på Canvas. Länken ska vara på formen: https://github.com/emilfolino/lager-v4.git

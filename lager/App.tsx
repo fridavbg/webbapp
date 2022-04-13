@@ -12,6 +12,7 @@ import { Base, Typography } from "./styles";
 import Home from "./components/incl/Home";
 import Stock from "./components/stock/Stock";
 import Plock from "./components/plock/Pick";
+import Deliveries from "./components/deliveries/Delivieries";
 import Header from "./components/incl/Header";
 import Footer from "./components/incl/Footer";
 const Tab = createBottomTabNavigator();
@@ -91,6 +92,9 @@ export default function App() {
                                 setProducts={setProducts}
                             />
                         )}
+                    </Tab.Screen>
+                    <Tab.Screen name="Deliveries">
+                        {() => <Deliveries />}
                     </Tab.Screen>
                 </Tab.Navigator>
                 <Footer />
