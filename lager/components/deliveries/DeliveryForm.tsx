@@ -1,7 +1,7 @@
 // components/DeliveryForm.tsx
 import { useState } from "react";
 import { ScrollView, Text, TextInput, Button } from "react-native";
-import { Base, Typography, Forms } from "../../styles";
+import { Base, Typography, Form } from "../../styles";
 
 import Delivery from "../interfaces/delivery";
 
@@ -14,7 +14,7 @@ export default function DeliveryForm({ navigation }) {
 
             <Text style={{ ...Typography.label }}>Kommentar</Text>
             <TextInput
-                style={{ ...Forms.input }}
+                style={{ ...Form.input }}
                 onChangeText={(content: string) => {
                     setDelivery({ ...delivery, comment: content });
                 }}
