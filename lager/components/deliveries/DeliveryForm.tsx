@@ -1,5 +1,5 @@
 // components/DeliveryForm.tsx
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
     ScrollView,
     Text,
@@ -23,6 +23,8 @@ export default function DeliveryForm({ navigation }) {
 
     function DateDropDown(props) {
         const [dropDownDate, setDropDownDate] = useState<Date>(new Date());
+        const [currentDate, setCurrentDate] = useState("");
+
         const [show, setShow] = useState<Boolean>(false);
 
         const showDatePicker = () => {
@@ -36,6 +38,7 @@ export default function DeliveryForm({ navigation }) {
                         onPress={showDatePicker}
                         title="Visa datumväljare"
                         style={Base.button}
+                        setCurrentDate={dropDownDate}
                         value={dropDownDate}
                     />
                 )}
@@ -57,7 +60,7 @@ export default function DeliveryForm({ navigation }) {
         );
     }
 
-    async function addDelivery() {
+    async function addDelivery(props) {
         await deliveryModel.addDelivery(delivery);
         const updatedProduct = {
             ...currentProduct,
@@ -71,11 +74,13 @@ export default function DeliveryForm({ navigation }) {
     return (
         <ScrollView style={{ ...Base.container }}>
             <Text style={{ ...Typography.title }}>Ny inleverans</Text>
+            <Text style={{ ...Typography.label }}>Produkt</Text>
             <ProductDropDown
                 delivery={delivery}
                 setDelivery={setDelivery}
                 setCurrentProduct={setCurrentProduct}
             />
+            <Text style={{ ...Typography.label }}>Datum</Text>
             <DateDropDown
                 delivery={delivery}
                 setDelivery={setDelivery}

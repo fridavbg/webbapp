@@ -1,9 +1,10 @@
 import config from "../config/config.json";
-
-import Deliveries from "../interfaces/delivery";
+import Moment from "moment";
+import Delivery from "../interfaces/delivery";
+import moment from "moment";
 
 const deliveries = {
-    getDeliveries: async function getDeliveries(): Promise<Deliveries[]> {
+    getDeliveries: async function getDeliveries(): Promise<Delivery[]> {
         const response = await fetch(
             `${config.base_url}/deliveries?api_key=${config.api_key}`
         );
@@ -11,7 +12,10 @@ const deliveries = {
 
         return result.data;
     },
-    addDelivery: async function addDelivery(delivery) {
+
+    addDelivery: async function addDelivery(delivery: Partial<Delivery>) {
+        Moment.locale('en');
+        delivery.delivery_date = moment(delivery.delivery_date).format('YYYY-MM-DD');
         console.log(delivery);
         try {
             await fetch(`${config.base_url}/deliveries?`, {
@@ -20,19 +24,6 @@ const deliveries = {
                     "content-type": "application/json",
                 },
                 method: "POST",
-            });
-        } catch (error) {
-            console.log("Could not add delivery: ", error);
-        }
-    },
-    setDelivery: async function setDelivery(delivery) {
-        try {
-            await fetch(`${config.base_url}/deliveries?`, {
-                body: JSON.stringify(delivery),
-                headers: {
-                    "content-type": "application/json",
-                },
-                method: "PUT",
             });
         } catch (error) {
             console.log("Could not add delivery: ", error);

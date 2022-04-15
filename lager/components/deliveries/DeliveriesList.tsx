@@ -41,7 +41,7 @@ export default function DeliveriesList({ route, navigation }) {
         );
     });
 
-    if (listOfDeliveries.length > 0 ) {
+    if (listOfDeliveries.length > 0) {
         return (
             <ScrollView>
                 <View style={Base.container}>
@@ -61,5 +61,20 @@ export default function DeliveriesList({ route, navigation }) {
             </ScrollView>
         );
     }
-    return <Text style={Typography.errMsg}>Inga inleveranser</Text>;
+    return (
+        <ScrollView>
+            <View style={Base.container}>
+                <Text style={Typography.title}>Inleveranser</Text>
+                <Text style={Typography.errMsg}>Inga inleveranser</Text>
+                <TouchableOpacity
+                    style={Base.button}
+                    onPress={() => {
+                        navigation.navigate("DeliveryForm");
+                    }}
+                >
+                    <Text style={Typography.btnText}>Skapa ny inleverans</Text>
+                </TouchableOpacity>
+            </View>
+        </ScrollView>
+    );
 }
