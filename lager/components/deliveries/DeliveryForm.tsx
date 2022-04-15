@@ -35,6 +35,8 @@ export default function DeliveryForm({ navigation }) {
                     <Button
                         onPress={showDatePicker}
                         title="Visa datumväljare"
+                        style={Base.button}
+
                     />
                 )}
                 {(show || Platform.OS === "ios") && (
@@ -46,7 +48,6 @@ export default function DeliveryForm({ navigation }) {
                                 ...props.delivery,
                                 delivery_date: date.toLocaleDateString("se-SV"),
                             });
-
                             setShow(false);
                         }}
                         value={dropDownDate}
@@ -65,11 +66,12 @@ export default function DeliveryForm({ navigation }) {
 
         await productModel.updateProduct(updatedProduct);
 
-        navigation.navigate("List", { reload: true });
+        navigation.navigate("DeliveryList", { reload: true });
     }
     return (
         <ScrollView style={{ ...Base.container }}>
             <Text style={{ ...Typography.title }}>Ny inleverans</Text>
+            <ProductDropDown />
             <DateDropDown />
             <Text style={{ ...Typography.label }}>Antal</Text>
             <TextInput
@@ -88,9 +90,6 @@ export default function DeliveryForm({ navigation }) {
                 }}
                 value={delivery?.comment}
             />
-
-            <ProductDropDown />
-
             <TouchableOpacity
                 style={{ ...Base.button }}
                 onPress={() => {
