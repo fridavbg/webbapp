@@ -31,29 +31,35 @@ export default function DeliveriesList({ route, navigation }) {
                 }}
             >
                 <Text style={Typography.btnText}>
+                    ID: {delivery.id} {"\n"}
                     PRODUCT-ID: {delivery.product_id} {"\n"}
                     ANTAL: {delivery.amount} {"\n"}
                     LEVERANSDATUM: {delivery.delivery_date} {"\n"}
-                    KOMMENTAR: {delivery.commentƒ} {"\n"}
+                    KOMMENTAR: {delivery.comment} {"\n"}
                 </Text>
             </TouchableOpacity>
         );
     });
 
-    return (
-        <ScrollView>
-            <View style={Base.container}>
-                <Text style={Typography.title}>Inleveranser</Text>
-                {listOfDeliveries}
-                <TouchableOpacity
-                    style={Base.button}
-                    onPress={() => {
-                        navigation.navigate("Form");
-                    }}
-                >
-                    <Text style={Typography.btnText}>Skapa ny inleverans</Text>
-                </TouchableOpacity>
-            </View>
-        </ScrollView>
-    );
+    if (listOfDeliveries.length > 0 ) {
+        return (
+            <ScrollView>
+                <View style={Base.container}>
+                    <Text style={Typography.title}>Inleveranser</Text>
+                    {listOfDeliveries}
+                    <TouchableOpacity
+                        style={Base.button}
+                        onPress={() => {
+                            navigation.navigate("Form");
+                        }}
+                    >
+                        <Text style={Typography.btnText}>
+                            Skapa ny inleverans
+                        </Text>
+                    </TouchableOpacity>
+                </View>
+            </ScrollView>
+        );
+    }
+    return <Text style={Typography.errMsg}>Inga inleveranser</Text>;
 }

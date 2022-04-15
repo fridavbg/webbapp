@@ -3,7 +3,7 @@ import { useEffect } from "react";
 
 // COMPONENTS
 import OrderList from "../order/OrderList";
-import PickList from "../plock/PickList";
+import PickList from "./PickList";
 import productModel from "../../models/products";
 
 const Stack = createNativeStackNavigator();

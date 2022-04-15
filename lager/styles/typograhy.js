@@ -50,6 +50,7 @@ export const errMsg = {
     borderColor: "darkred",
     textTransform: "uppercase",
     padding: 12,
+    margin: 15,
 };
 
 export const label = {

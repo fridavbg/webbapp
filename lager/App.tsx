@@ -11,7 +11,7 @@ import { Base, Typography } from "./styles";
 // COMPONENTS
 import Home from "./components/incl/Home";
 import Stock from "./components/stock/Stock";
-import Plock from "./components/plock/Pick";
+import Plock from "./components/products/Pick";
 import Deliveries from "./components/deliveries/Delivieries";
 import Header from "./components/incl/Header";
 import Footer from "./components/incl/Footer";
