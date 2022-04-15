@@ -11,6 +11,7 @@ import {
 } from "react-native";
 import { Base, Typography, Form } from "../../styles";
 import DateTimePicker from "@react-native-community/datetimepicker";
+import moment from "moment";
 
 import Delivery from "../interfaces/delivery";
 import deliveryModel from "../../models/deliveries";
@@ -23,28 +24,33 @@ export default function DeliveryForm({ navigation }) {
 
     function DateDropDown(props) {
         const [dropDownDate, setDropDownDate] = useState<Date>(new Date());
-        const [currentDate, setCurrentDate] = useState("");
-
         const [show, setShow] = useState<Boolean>(false);
 
         const showDatePicker = () => {
             setShow(true);
         };
 
+        const formatDate = (date: Date) => {};
+        moment(Date).format("YYYY-MM-DD");
         return (
             <View>
                 {Platform.OS === "android" && (
-                    <Button
-                        onPress={showDatePicker}
-                        title="Visa datumväljare"
-                        style={Base.button}
-                        setCurrentDate={dropDownDate}
-                        value={dropDownDate}
-                    />
+            <Button
+                onPress={(_event: any, date: any) => {
+                    showDatePicker();
+                    // date undefined ??
+                    // props.setDelivery({
+                    //     ...props.delivery,
+                    //     delivery_date: date.toLocaleDateString("se-SV"),
+                    // });
+                }}
+                title="Visa datumväljare"
+                style={Base.button}
+            />
                 )}
                 {(show || Platform.OS === "ios") && (
                     <DateTimePicker
-                        onChange={(event, date) => {
+                        onChange={(_event: any, date: any) => {
                             setDropDownDate(date);
 
                             props.setDelivery({

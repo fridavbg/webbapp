@@ -1,7 +1,6 @@
 import config from "../config/config.json";
-import Moment from "moment";
 import Delivery from "../interfaces/delivery";
-import moment from "moment";
+// import { format } from "date-fns";
 
 const deliveries = {
     getDeliveries: async function getDeliveries(): Promise<Delivery[]> {
@@ -14,8 +13,9 @@ const deliveries = {
     },
 
     addDelivery: async function addDelivery(delivery: Partial<Delivery>) {
-        Moment.locale('en');
-        delivery.delivery_date = moment(delivery.delivery_date).format('YYYY-MM-DD');
+        // ANDROID - DATUM
+        // const date = new Date('YYYY-MM-DD')
+        // format(date, delivery.delivery_date)
         console.log(delivery);
         try {
             await fetch(`${config.base_url}/deliveries?`, {
