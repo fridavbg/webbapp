@@ -8,15 +8,15 @@ import deliveryModel from "../../models/deliveries";
 export default function DeliveriesList({ route, navigation }) {
     const { reload } = route.params || true;
     const [allDeliveries, setAllDeliveries] = useState([]);
+
     if (reload) {
-        console.log("RELOAD");
-        reloadOrders();
+        reloadDeliveries();
     }
-    async function reloadOrders() {
+    async function reloadDeliveries() {
         setAllDeliveries(await deliveryModel.getDeliveries());
     }
     useEffect(() => {
-        reloadOrders();
+        reloadDeliveries();
     }, []);
 
     const listOfDeliveries = allDeliveries.map((delivery, index) => {
@@ -50,7 +50,7 @@ export default function DeliveriesList({ route, navigation }) {
                     <TouchableOpacity
                         style={Base.button}
                         onPress={() => {
-                            navigation.navigate("Form");
+                            navigation.navigate("DeliveryForm");
                         }}
                     >
                         <Text style={Typography.btnText}>

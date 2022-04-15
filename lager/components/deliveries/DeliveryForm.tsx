@@ -19,7 +19,7 @@ import ProductDropDown from "../products/ProductsDropDown";
 
 export default function DeliveryForm({ navigation }) {
     const [delivery, setDelivery] = useState<Partial<Delivery>>({});
-    const [currentProduct, setCurrentProduct] = useState<Partial<Product>>({})
+    const [currentProduct, setCurrentProduct] = useState<Partial<Product>>({});
 
     function DateDropDown(props) {
         const [dropDownDate, setDropDownDate] = useState<Date>(new Date());
@@ -36,7 +36,7 @@ export default function DeliveryForm({ navigation }) {
                         onPress={showDatePicker}
                         title="Visa datumväljare"
                         style={Base.button}
-
+                        value={dropDownDate}
                     />
                 )}
                 {(show || Platform.OS === "ios") && (
@@ -71,8 +71,16 @@ export default function DeliveryForm({ navigation }) {
     return (
         <ScrollView style={{ ...Base.container }}>
             <Text style={{ ...Typography.title }}>Ny inleverans</Text>
-            <ProductDropDown />
-            <DateDropDown />
+            <ProductDropDown
+                delivery={delivery}
+                setDelivery={setDelivery}
+                setCurrentProduct={setCurrentProduct}
+            />
+            <DateDropDown
+                delivery={delivery}
+                setDelivery={setDelivery}
+                setCurrentProduct={setCurrentProduct}
+            />
             <Text style={{ ...Typography.label }}>Antal</Text>
             <TextInput
                 style={{ ...Form.input }}

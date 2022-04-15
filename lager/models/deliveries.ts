@@ -11,8 +11,33 @@ const deliveries = {
 
         return result.data;
     },
-    addDelivery: async function addDelivery(params: type) { },
-    setDelivery: async function setDelivery(params: type) { },
+    addDelivery: async function addDelivery(delivery) {
+        console.log(delivery);
+        try {
+            await fetch(`${config.base_url}/deliveries?`, {
+                body: JSON.stringify(delivery),
+                headers: {
+                    "content-type": "application/json",
+                },
+                method: "POST",
+            });
+        } catch (error) {
+            console.log("Could not add delivery: ", error);
+        }
+    },
+    setDelivery: async function setDelivery(delivery) {
+        try {
+            await fetch(`${config.base_url}/deliveries?`, {
+                body: JSON.stringify(delivery),
+                headers: {
+                    "content-type": "application/json",
+                },
+                method: "PUT",
+            });
+        } catch (error) {
+            console.log("Could not add delivery: ", error);
+        }
+    },
 };
 
 export default deliveries;
