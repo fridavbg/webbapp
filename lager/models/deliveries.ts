@@ -2,8 +2,6 @@ import config from "../config/config.json";
 import Delivery from "../interfaces/delivery";
 import products from "./products";
 
-// import { format } from "date-fns";
-
 const deliveries = {
     getDeliveries: async function getDeliveries(): Promise<Delivery[]> {
         const response = await fetch(
@@ -15,12 +13,8 @@ const deliveries = {
     },
 
     addDelivery: async function addDelivery(delivery: Partial<Delivery>) {
-        // ANDROID - DATUM
-        // const date = new Date('YYYY-MM-DD')
-        // format(date, delivery.delivery_date)
-
         console.log(delivery);
-        
+
         const newDelivery = {
             ...delivery,
             product_id: delivery.product_id,

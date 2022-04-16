@@ -15,7 +15,6 @@ import Delivery from "../interfaces/delivery";
 import deliveryModel from "../../models/deliveries";
 import productModel from "../../models/products";
 import ProductDropDown from "../products/ProductsDropDown";
-
 import Moment from "moment";
 
 export default function DeliveryForm({ navigation }) {
@@ -25,6 +24,8 @@ export default function DeliveryForm({ navigation }) {
     function DateDropDown(props) {
         const [dropDownDate, setDropDownDate] = useState<Date>(new Date());
         const [show, setShow] = useState<Boolean>(false);
+        // ANDROID - DATUM
+        const dateFormat = new Date("YYYY-MM-DD");
 
         const showDatePicker = () => {
             setShow(true);
@@ -57,7 +58,8 @@ export default function DeliveryForm({ navigation }) {
 
                             props.setDelivery({
                                 ...props.delivery,
-                                delivery_date: date.toLocaleDateString("se-SV"),
+                                delivery_date:
+                                    Moment(date).format("DD-MM-YYYY"),
                             });
                             setShow(false);
                         }}
@@ -70,6 +72,7 @@ export default function DeliveryForm({ navigation }) {
 
     async function addDelivery(props) {
         await deliveryModel.addDelivery(delivery);
+        /// Stock uppdateras EJ
         const updatedProduct = {
             ...currentProduct,
             stock: (currentProduct.stock || 0) + (delivery.amount || 0),
@@ -117,7 +120,7 @@ export default function DeliveryForm({ navigation }) {
             <TouchableOpacity
                 style={{ ...Base.button }}
                 onPress={() => {
-                    addDelivery({...delivery});
+                    addDelivery({ ...delivery });
                 }}
             >
                 <Text style={{ ...Typography.btnText }}>Gör inleverans</Text>
