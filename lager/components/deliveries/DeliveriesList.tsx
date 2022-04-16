@@ -32,7 +32,7 @@ export default function DeliveriesList({ route, navigation }) {
             >
                 <Text style={Typography.btnText}>
                     ID: {delivery.id} {"\n"}
-                    PRODUCT-ID: {delivery.product_id} {"\n"}
+                    PRODUCT_ID: {delivery.product_id} {"\n"}
                     ANTAL: {delivery.amount} {"\n"}
                     LEVERANSDATUM: {delivery.delivery_date} {"\n"}
                     KOMMENTAR: {delivery.comment} {"\n"}

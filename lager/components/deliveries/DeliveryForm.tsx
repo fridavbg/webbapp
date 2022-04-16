@@ -36,8 +36,13 @@ export default function DeliveryForm({ navigation }) {
                     <TouchableOpacity
                         style={Base.button}
                         value={dropDownDate}
-                        onPress={() => {
-                            showDatePicker();
+                        onPress={showDatePicker}
+                        onChange={(_event: any, date: any) => {
+                            setDropDownDate(date);
+                            props.setDelivery({
+                                ...props.delivery,
+                                delivery_date: date.toLocaleDateString("se-SV"),
+                            });
                         }}
                     >
                         <Text style={Typography.btnText}>
@@ -112,7 +117,7 @@ export default function DeliveryForm({ navigation }) {
             <TouchableOpacity
                 style={{ ...Base.button }}
                 onPress={() => {
-                    addDelivery();
+                    addDelivery({...delivery});
                 }}
             >
                 <Text style={{ ...Typography.btnText }}>Gör inleverans</Text>
