@@ -1,5 +1,7 @@
 import config from "../config/config.json";
 import Delivery from "../interfaces/delivery";
+import { updateProduct } from "./products";
+
 import products from "./products";
 
 const deliveries = {
@@ -14,7 +16,6 @@ const deliveries = {
 
     addDelivery: async function addDelivery(delivery: Partial<Delivery>) {
         console.log(delivery);
-
         const newDelivery = {
             ...delivery,
             product_id: delivery.product_id,

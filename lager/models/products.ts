@@ -9,10 +9,15 @@ const orders = {
 
         return result.data;
     },
-    updateProduct: async function updateProduct(product) {
+    updateProduct: async function updateProduct(product: any) {
+        const updateProduct = {
+            ...product,
+            stock: product.stock,
+            api_key: config.api_key,
+        };
         try {
             await fetch(`${config.base_url}/products?`, {
-                body: JSON.stringify(product),
+                body: JSON.stringify(updateProduct),
                 headers: {
                     "content-type": "application/json",
                 },

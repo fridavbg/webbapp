@@ -5,7 +5,6 @@ import {
     Text,
     TextInput,
     TouchableOpacity,
-    Button,
     View,
     Platform,
 } from "react-native";
@@ -24,8 +23,6 @@ export default function DeliveryForm({ navigation }) {
     function DateDropDown(props) {
         const [dropDownDate, setDropDownDate] = useState<Date>(new Date());
         const [show, setShow] = useState<Boolean>(false);
-        // ANDROID - DATUM
-        const dateFormat = new Date("YYYY-MM-DD");
 
         const showDatePicker = () => {
             setShow(true);
@@ -77,11 +74,14 @@ export default function DeliveryForm({ navigation }) {
             ...currentProduct,
             stock: (currentProduct.stock || 0) + (delivery.amount || 0),
         };
+        // console.log("CURRENT PRODUCT: ", currentProduct.stock);
+        // console.log("UPDATED PRODUCT: ", updatedProduct.stock);
 
         await productModel.updateProduct(updatedProduct);
 
         navigation.navigate("DeliveryList", { reload: true });
     }
+
     return (
         <ScrollView style={{ ...Base.container }}>
             <Text style={{ ...Typography.title }}>Ny inleverans</Text>
@@ -91,10 +91,7 @@ export default function DeliveryForm({ navigation }) {
                 setDelivery={setDelivery}
                 setCurrentProduct={setCurrentProduct}
             />
-            <Text style={{ ...Typography.label }}>
-                Datum
-                {/* {{ dropDowndate }} */}
-            </Text>
+            <Text style={{ ...Typography.label }}>Datum</Text>
             <DateDropDown
                 delivery={delivery}
                 setDelivery={setDelivery}
