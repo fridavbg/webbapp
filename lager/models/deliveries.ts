@@ -17,9 +17,14 @@ const deliveries = {
         // const date = new Date('YYYY-MM-DD')
         // format(date, delivery.delivery_date)
         console.log(delivery);
+        const newDelivery = {
+            ...delivery,
+            product_id: delivery.product_id,
+            api_key: config.api_key,
+        };
         try {
             await fetch(`${config.base_url}/deliveries?`, {
-                body: JSON.stringify(delivery),
+                body: JSON.stringify(newDelivery),
                 headers: {
                     "content-type": "application/json",
                 },

@@ -11,12 +11,12 @@ import {
 } from "react-native";
 import { Base, Typography, Form } from "../../styles";
 import DateTimePicker from "@react-native-community/datetimepicker";
-import moment from "moment";
-
 import Delivery from "../interfaces/delivery";
 import deliveryModel from "../../models/deliveries";
 import productModel from "../../models/products";
 import ProductDropDown from "../products/ProductsDropDown";
+
+import Moment from "moment";
 
 export default function DeliveryForm({ navigation }) {
     const [delivery, setDelivery] = useState<Partial<Delivery>>({});
@@ -30,23 +30,20 @@ export default function DeliveryForm({ navigation }) {
             setShow(true);
         };
 
-        const formatDate = (date: Date) => {};
-        moment(Date).format("YYYY-MM-DD");
         return (
             <View>
                 {Platform.OS === "android" && (
-            <Button
-                onPress={(_event: any, date: any) => {
-                    showDatePicker();
-                    // date undefined ??
-                    // props.setDelivery({
-                    //     ...props.delivery,
-                    //     delivery_date: date.toLocaleDateString("se-SV"),
-                    // });
-                }}
-                title="Visa datumväljare"
-                style={Base.button}
-            />
+                    <TouchableOpacity
+                        style={Base.button}
+                        value={dropDownDate}
+                        onPress={() => {
+                            showDatePicker();
+                        }}
+                    >
+                        <Text style={Typography.btnText}>
+                            Visa datumväljare
+                        </Text>
+                    </TouchableOpacity>
                 )}
                 {(show || Platform.OS === "ios") && (
                     <DateTimePicker
@@ -86,7 +83,10 @@ export default function DeliveryForm({ navigation }) {
                 setDelivery={setDelivery}
                 setCurrentProduct={setCurrentProduct}
             />
-            <Text style={{ ...Typography.label }}>Datum</Text>
+            <Text style={{ ...Typography.label }}>
+                Datum
+                {/* {{ dropDowndate }} */}
+            </Text>
             <DateDropDown
                 delivery={delivery}
                 setDelivery={setDelivery}
