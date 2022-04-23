@@ -1,5 +1,5 @@
 // components/DeliveryForm.tsx
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import {
     ScrollView,
     Text,
@@ -10,7 +10,7 @@ import {
 } from "react-native";
 import { Base, Typography, Form } from "../../styles";
 import DateTimePicker from "@react-native-community/datetimepicker";
-import Delivery from "../interfaces/delivery";
+import Delivery from "../../interfaces/delivery";
 import deliveryModel from "../../models/deliveries";
 import productModel from "../../models/products";
 import ProductDropDown from "../products/ProductsDropDown";
@@ -87,6 +87,7 @@ export default function DeliveryForm({ navigation }) {
             <Text style={{ ...Typography.title }}>Ny inleverans</Text>
             <Text style={{ ...Typography.label }}>Produkt</Text>
             <ProductDropDown
+                defaultIndex={0}
                 delivery={delivery}
                 setDelivery={setDelivery}
                 setCurrentProduct={setCurrentProduct}
@@ -100,6 +101,7 @@ export default function DeliveryForm({ navigation }) {
             <Text style={{ ...Typography.label }}>Antal</Text>
             <TextInput
                 style={{ ...Form.input }}
+                value={Number}
                 onChangeText={(content: string) => {
                     setDelivery({ ...delivery, amount: parseInt(content) });
                 }}
@@ -109,6 +111,7 @@ export default function DeliveryForm({ navigation }) {
             <Text style={{ ...Typography.label }}>Kommentar</Text>
             <TextInput
                 style={{ ...Form.input }}
+                value={Text}
                 onChangeText={(content: string) => {
                     setDelivery({ ...delivery, comment: content });
                 }}

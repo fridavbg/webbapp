@@ -93,7 +93,7 @@ export default function App() {
                             />
                         )}
                     </Tab.Screen>
-                    <Tab.Screen name="Deliveries">
+                    <Tab.Screen name="Inleveranser">
                         {() => <Deliveries />}
                     </Tab.Screen>
                 </Tab.Navigator>
