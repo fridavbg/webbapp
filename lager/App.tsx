@@ -11,9 +11,11 @@ import { Base, Typography } from "./styles";
 // COMPONENTS
 import Home from "./components/incl/Home";
 import Auth from "./components/auth/Auth";
+import authModel from "./models/auth"
 import Stock from "./components/stock/Stock";
 import Plock from "./components/products/Pick";
 import Deliveries from "./components/deliveries/Delivieries";
+import Invoices from "./components/invoices/Invoices";
 import Header from "./components/incl/Header";
 import Footer from "./components/incl/Footer";
 const Tab = createBottomTabNavigator();
@@ -62,7 +64,8 @@ export default function App() {
         Plock: "bars",
         Stock: "book",
         Inleveranser: 'star',
-        Login: 'login'
+        Login: 'login',
+        Faktura: 'paperclip'
     };
 
     return (
