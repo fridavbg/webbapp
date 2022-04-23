@@ -8,7 +8,7 @@ import {
     View,
     Platform,
 } from "react-native";
-import { Base, Typography, Form } from "../../styles";
+import { Base, Typography, Forms } from "../../styles";
 import DateTimePicker from "@react-native-community/datetimepicker";
 import Delivery from "../../interfaces/delivery";
 import deliveryModel from "../../models/deliveries";
@@ -33,10 +33,9 @@ export default function DeliveryForm({ navigation }) {
                 {Platform.OS === "android" && (
                     <TouchableOpacity
                         style={Base.button}
-                        value={dropDownDate}
                         onPress={showDatePicker}
                         onChange={(_event: any, date: any) => {
-                            setDropDownDate(date);
+                            setDropDownDate(date || new Date());
                             props.setDelivery({
                                 ...props.delivery,
                                 delivery_date: date.toLocaleDateString("se-SV"),
@@ -51,8 +50,7 @@ export default function DeliveryForm({ navigation }) {
                 {(show || Platform.OS === "ios") && (
                     <DateTimePicker
                         onChange={(_event: any, date: any) => {
-                            setDropDownDate(date);
-
+                            setDropDownDate(date || new Date());
                             props.setDelivery({
                                 ...props.delivery,
                                 delivery_date:
@@ -84,10 +82,13 @@ export default function DeliveryForm({ navigation }) {
 
     return (
         <ScrollView style={{ ...Base.container }}>
-            <Text style={{ ...Typography.title }}>Ny inleverans</Text>
-            <Text style={{ ...Typography.label }}>Produkt</Text>
+            <Text style={{ ...Typography.title }}>
+                Ny inleverans
+            </Text>
+            <Text style={{ ...Typography.label }}>
+                Produkt
+            </Text>
             <ProductDropDown
-                defaultIndex={0}
                 delivery={delivery}
                 setDelivery={setDelivery}
                 setCurrentProduct={setCurrentProduct}
@@ -117,6 +118,7 @@ export default function DeliveryForm({ navigation }) {
                 }}
                 value={delivery?.comment}
             />
+
             <TouchableOpacity
                 style={{ ...Base.button }}
                 onPress={() => {

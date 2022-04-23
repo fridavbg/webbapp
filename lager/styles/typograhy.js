@@ -1,13 +1,14 @@
 export const header1 = {
     color: "#fff",
-    fontSize: 48,
+    fontSize: 20,
     textAlign: "center",
     fontFamily: "Arvo_Bold",
+    textTransform: "uppercase",
 };
 
 export const footer = {
     color: "#fff",
-    fontSize: 24,
+    fontSize: 15,
     textAlign: "center",
     fontFamily: "Arvo_Italic",
 };

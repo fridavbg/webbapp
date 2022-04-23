@@ -8,8 +8,6 @@ const Stack = createNativeStackNavigator();
 export default function Deliveries() {
     return (
         <Stack.Navigator initialRouteName="Inleveranser">
-            {/* <Stack.Screen name="DeliveryList" component={DeliveriesList} />
-            <Stack.Screen name="DeliveryForm" component={DeliveryForm} /> */}
             <Stack.Screen name="DeliveryList">
                 {(screenProps) => <DeliveriesList {...screenProps} />}
             </Stack.Screen>

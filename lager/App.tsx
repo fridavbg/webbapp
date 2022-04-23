@@ -3,13 +3,14 @@ import { StatusBar } from "expo-status-bar";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { NavigationContainer, DefaultTheme } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { Ionicons } from "@expo/vector-icons";
+import { AntDesign } from "@expo/vector-icons";
 import AppLoading from "expo-app-loading";
 import * as Font from "expo-font";
 import { Base, Typography } from "./styles";
 
 // COMPONENTS
 import Home from "./components/incl/Home";
+import Auth from "./components/auth/Auth";
 import Stock from "./components/stock/Stock";
 import Plock from "./components/products/Pick";
 import Deliveries from "./components/deliveries/Delivieries";
@@ -18,8 +19,15 @@ import Footer from "./components/incl/Footer";
 const Tab = createBottomTabNavigator();
 
 export default function App() {
-    // LIFTING STATE - Products
     const [products, setProducts] = useState([]);
+    const [dataLoaded, setDataLoaded] = useState(false);
+    const [isLoggedIn, setIsLoggedIn] = useState<Boolean>(false);
+
+    useEffect(async () => {
+        setIsLoggedIn(
+            await authModel.loggedIn() /* Vi kommer tillbaka till denna funktion. */
+        );
+    }, []);
 
     // TA IN FONTS
     const fetchFonts = async () =>
@@ -29,7 +37,6 @@ export default function App() {
             Arvo_Bold: require("./assets/fonts/Arvo/Arvo-Bold.ttf"),
             Arvo_Italic: require("./assets/fonts/Arvo/Arvo-Italic.ttf"),
         });
-    const [dataLoaded, setDataLoaded] = useState(false);
 
     if (!dataLoaded) {
         return (
@@ -52,8 +59,10 @@ export default function App() {
 
     const routeIcons = {
         Lager: "home",
-        Plock: "list",
+        Plock: "bars",
         Stock: "book",
+        Inleveranser: 'star',
+        Login: 'login'
     };
 
     return (
@@ -65,7 +74,7 @@ export default function App() {
                         tabBarIcon: ({ focused, color, size }) => {
                             let iconName = routeIcons[route.name] || "alert";
                             return (
-                                <Ionicons
+                                <AntDesign
                                     name={iconName}
                                     size={size}
                                     color={color}
@@ -96,6 +105,13 @@ export default function App() {
                     <Tab.Screen name="Inleveranser">
                         {() => <Deliveries />}
                     </Tab.Screen>
+                    {isLoggedIn ? (
+                        <Tab.Screen name="Faktura" component={Invoices} />
+                    ) : (
+                        <Tab.Screen name="Login">
+                            {() => <Auth setIsLoggedIn={setIsLoggedIn} />}
+                        </Tab.Screen>
+                    )}
                 </Tab.Navigator>
                 <Footer />
             </NavigationContainer>
