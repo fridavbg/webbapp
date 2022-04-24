@@ -71,8 +71,6 @@ export default function DeliveryForm({ navigation }) {
             ...currentProduct,
             stock: (currentProduct.stock || 0) + (delivery.amount || 0),
         };
-        // console.log("CURRENT PRODUCT: ", currentProduct.stock);
-        // console.log("UPDATED PRODUCT: ", updatedProduct.stock);
 
         await productModel.updateProduct(updatedProduct);
 

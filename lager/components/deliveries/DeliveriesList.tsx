@@ -21,7 +21,7 @@ export default function DeliveriesList({ route, navigation }) {
 
     const listOfDeliveries = allDeliveries.map((delivery, index) => {
         return (
-            <Text style={Base.listItem}>
+            <Text key={index} style={Base.listItem}>
                 ID: {delivery.id} {"\n"}
                 PRODUCT_ID: {delivery.product_id} {"\n"}
                 ANTAL: {delivery.amount} {"\n"}

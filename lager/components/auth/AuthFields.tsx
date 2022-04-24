@@ -1,5 +1,5 @@
 import { View, Text, TextInput, Button, TouchableOpacity } from "react-native";
-import { Typography, Forms, Base } from "../../styles";
+import { Typography, Form, Base } from "../../styles";
 
 export default function AuthFields({
     auth,
@@ -12,7 +12,7 @@ export default function AuthFields({
         <View style={Base.container}>
             <Text style={Typography.label}>E-post</Text>
             <TextInput
-                style={Forms.input}
+                style={Form.input}
                 onChangeText={(content: string) => {
                     setAuth({ ...auth, email: content });
                 }}
@@ -21,7 +21,7 @@ export default function AuthFields({
             />
             <Text style={Typography.label}>Lösenord</Text>
             <TextInput
-                style={Forms.input}
+                style={Form.input}
                 onChangeText={(content: string) => {
                     setAuth({ ...auth, password: content });
                 }}
