@@ -8,7 +8,6 @@ export default function Login({navigation, setIsLoggedIn}) {
 
     async function doLogin() {
         if (auth.email && auth.password) {
-            // Snart återkommer vi till AuthModel :)
             const result = await AuthModel.login(auth.email, auth.password);
 
             setIsLoggedIn(true);

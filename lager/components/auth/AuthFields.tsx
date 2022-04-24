@@ -9,7 +9,8 @@ export default function AuthFields({
     navigation,
 }) {
     return (
-        <View style={Base.container}>
+        <View style={Base.base}>
+            <Text style={Typography.title}>{title}</Text>
             <Text style={Typography.label}>E-post</Text>
             <TextInput
                 style={Form.input}
@@ -37,18 +38,14 @@ export default function AuthFields({
                 <Text style={Typography.btnText}>{title}</Text>
             </TouchableOpacity>
             {title === "Logga in" && (
-                <View>
-                    <TouchableOpacity
-                        style={Base.button}
-                        onPress={() => {
-                            navigation.navigate("Register");
-                        }}
-                    >
-                        <Text style={Typography.btnText}>
-                            Registrera istället
-                        </Text>
-                    </TouchableOpacity>
-                </View>
+                <TouchableOpacity
+                    style={Base.button}
+                    onPress={() => {
+                        navigation.navigate("Register");
+                    }}
+                >
+                    <Text style={Typography.btnText}>Registrera istället</Text>
+                </TouchableOpacity>
             )}
         </View>
     );

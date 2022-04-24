@@ -11,7 +11,7 @@ import { Base, Typography } from "./styles";
 // COMPONENTS
 import Home from "./components/incl/Home";
 import Auth from "./components/auth/Auth";
-import authModel from "./models/auth";
+import AuthModel from "./models/auth";
 import Stock from "./components/stock/Stock";
 import Plock from "./components/products/Pick";
 import Deliveries from "./components/deliveries/Delivieries";
@@ -26,12 +26,9 @@ export default function App() {
     const [isLoggedIn, setIsLoggedIn] = useState<Boolean>(false);
 
     useEffect(async () => {
-        setIsLoggedIn(
-            await authModel.loggedIn() 
-        );
+        setIsLoggedIn(await AuthModel.loggedIn());
     }, []);
 
-    // TA IN FONTS
     const fetchFonts = async () =>
         await Font.loadAsync({
             Architects_Daughter: require("./assets/fonts/Architects_Daughter/ArchitectsDaughter-Regular.ttf"),
@@ -75,7 +72,7 @@ export default function App() {
                 <Tab.Navigator
                     screenOptions={({ route }) => ({
                         tabBarIcon: ({ focused, color, size }) => {
-                            let iconName = routeIcons[route.name] || "alert";
+                            let iconName = routeIcons[route.name] || "exclamation";
                             return (
                                 <AntDesign
                                     name={iconName}
@@ -111,7 +108,7 @@ export default function App() {
                     {isLoggedIn ? (
                         <Tab.Screen name="Faktura" component={Invoices} />
                     ) : (
-                        <Tab.Screen name="Login">
+                        <Tab.Screen name="Logga in">
                             {() => <Auth setIsLoggedIn={setIsLoggedIn} />}
                         </Tab.Screen>
                     )}
