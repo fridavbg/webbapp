@@ -2,8 +2,9 @@ import { View, ScrollView, Text, TouchableOpacity, Button } from "react-native";
 import { useEffect } from "react";
 import { Base, Typography } from "../../styles";
 import invoiceModel from "../../models/invoices";
+import authModel from "../../models/auth";
 
-export default function InvoicesList({ route, invoices, setInvoices }) {
+export default function InvoicesList({ route, navigation, invoices, setInvoices }) {
     const { reload } = route.params || true;
 
     if (reload) {
@@ -39,6 +40,15 @@ export default function InvoicesList({ route, invoices, setInvoices }) {
                     >
                         <Text style={Typography.btnText}>Skapa ny faktura</Text>
                     </TouchableOpacity>
+                    <TouchableOpacity
+                        style={Base.button}
+                        onPress={() => {
+                            authModel.logout();
+                            navigation.navigate("Lager", {reload : true});
+                        }}
+                    >
+                        <Text style={Typography.btnText}>Logga ut</Text>
+                    </TouchableOpacity>
                 </View>
             </ScrollView>
         );
@@ -54,7 +64,22 @@ export default function InvoicesList({ route, invoices, setInvoices }) {
                     //     navigation.navigate("InvoiceForm");
                     // }}
                 >
-                    <Text style={Typography.btnText}>Skapa ny faktura</Text>
+                    <Text
+                        style={Typography.btnText}
+                    >Skapa ny faktura</Text>
+                </TouchableOpacity>
+                <TouchableOpacity
+                    style={Base.button}
+                    onPress={() => {
+                        authModel.logout();
+                        navigation.navigate("Lager", {reload : true});
+                    }}
+                >
+                    <Text
+                        style={Typography.btnText}
+                    >
+                        Logga ut
+                    </Text>
                 </TouchableOpacity>
             </View>
         </ScrollView>

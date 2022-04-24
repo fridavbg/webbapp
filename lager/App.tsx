@@ -27,7 +27,7 @@ export default function App() {
 
     useEffect(async () => {
         setIsLoggedIn(
-            await authModel.loggedIn() /* Vi kommer tillbaka till denna funktion. */
+            await authModel.loggedIn() 
         );
     }, []);
 
