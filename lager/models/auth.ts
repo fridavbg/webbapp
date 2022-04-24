@@ -6,7 +6,7 @@ const auth = {
     loggedIn: async function loggedIn() {
         const token = await storage.readToken();
         const twentyFourHours = 1000 * 60 * 60 * 24;
-        const notExpired = new Date().getTime() - token.date < twentyFourHours;
+        const notExpired = (new Date().getTime() - token.date) < twentyFourHours;
 
         return token && notExpired;
     },
@@ -20,7 +20,7 @@ const auth = {
             method: "POST",
             body: JSON.stringify(data),
             headers: {
-                "content-type": "application/json",
+                'content-type': 'application/json'
             },
         });
         const result = await response.json();
@@ -39,7 +39,7 @@ const auth = {
             method: "POST",
             body: JSON.stringify(data),
             headers: {
-                "content-type": "application/json",
+                'content-type': 'application/json'
             },
         });
 
@@ -47,7 +47,7 @@ const auth = {
     },
     logout: async function logout() {
         await storage.deleteToken();
-    },
+    }
 };
 
 export default auth;

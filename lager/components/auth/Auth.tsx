@@ -8,8 +8,12 @@ const Stack = createNativeStackNavigator();
 export default function Deliveries(props) {
     return (
         <Stack.Navigator initialRouteName="Login">
-            <Stack.Screen name="Login">
-                {(screenProps) => <Login {...screenProps} />}
+            <Stack.Screen name="LoginForm">
+                {(screenProps) => (
+                    <Login
+                        {...screenProps}
+                        setIsLoggedIn={props.setIsLoggedIn} />
+                )}
             </Stack.Screen>
             <Stack.Screen name="Register" component={Register} />
         </Stack.Navigator>

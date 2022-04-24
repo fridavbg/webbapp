@@ -1,5 +1,6 @@
 import { View, Text, TextInput, Button, TouchableOpacity } from "react-native";
-import { Typography, Forms, Base } from "../../styles";
+import { Typography, Form, Base } from "../../styles";
+import authModel from "../../models/auth";
 
 export default function RegisterFields({
     auth,
@@ -12,7 +13,7 @@ export default function RegisterFields({
         <View style={Base.container}>
             <Text style={Typography.label}>E-post</Text>
             <TextInput
-                style={Forms.input}
+                style={Form.input}
                 onChangeText={(content: string) => {
                     setAuth({ ...auth, email: content });
                 }}
@@ -21,7 +22,7 @@ export default function RegisterFields({
             />
             <Text style={Typography.label}>Lösenord</Text>
             <TextInput
-                style={Forms.input}
+                style={Form.input}
                 onChangeText={(content: string) => {
                     setAuth({ ...auth, password: content });
                 }}
@@ -31,7 +32,8 @@ export default function RegisterFields({
             <TouchableOpacity
                 style={Base.button}
                 onPress={() => {
-                    submit();
+                    authModel.register(auth?.email, auth?.password);
+                    navigation.navigate('Login', {reload: true});
                 }}
             >
                 <Text style={Typography.btnText}>WIP - Registrera</Text>
