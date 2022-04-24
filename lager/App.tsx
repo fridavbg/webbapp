@@ -11,7 +11,7 @@ import { Base, Typography } from "./styles";
 // COMPONENTS
 import Home from "./components/incl/Home";
 import Auth from "./components/auth/Auth";
-import authModel from "./models/auth"
+import authModel from "./models/auth";
 import Stock from "./components/stock/Stock";
 import Plock from "./components/products/Pick";
 import Deliveries from "./components/deliveries/Delivieries";
@@ -63,9 +63,9 @@ export default function App() {
         Lager: "home",
         Plock: "bars",
         Stock: "book",
-        Inleveranser: 'star',
-        Login: 'login',
-        Faktura: 'paperclip'
+        Inleveranser: "star",
+        Login: "login",
+        Faktura: "paperclip",
     };
 
     return (
@@ -112,7 +112,11 @@ export default function App() {
                         <Tab.Screen name="Faktura" component={Invoices} />
                     ) : (
                         <Tab.Screen name="Login">
-                            {() => <Auth setIsLoggedIn={setIsLoggedIn} />}
+                            {() => (
+                                <Auth
+                                    setIsLoggedIn={setIsLoggedIn}
+                                />
+                            )}
                         </Tab.Screen>
                     )}
                 </Tab.Navigator>

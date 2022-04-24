@@ -1,8 +1,5 @@
 import config from "../config/config.json";
 import Delivery from "../interfaces/delivery";
-import { updateProduct } from "./products";
-
-import products from "./products";
 
 const deliveries = {
     getDeliveries: async function getDeliveries(): Promise<Delivery[]> {
