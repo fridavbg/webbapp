@@ -1,4 +1,4 @@
-import { Text, View } from "react-native";
+import { ScrollView, Text, View } from "react-native";
 import { Base } from "../../styles";
 import { useEffect } from "react";
 import productModel from "../../models/products";
@@ -24,5 +24,5 @@ export default function StockList({ route, products, setProducts }) {
         </Text>
     ));
 
-    return <View>{productList}</View>;
+    return <ScrollView>{productList}</ScrollView>;
 }

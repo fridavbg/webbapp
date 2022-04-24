@@ -14,7 +14,10 @@ export default function Stock({ products, setProducts }) {
         <Stack.Navigator initialRouteName="Stock">
             <Stack.Screen name="Lagerförteckning">
                 {(screenProps) => (
-                    <StockList {...screenProps} products={products} setProducts={setProducts}/>
+                    <StockList
+                        {...screenProps}
+                        products={products}
+                        setProducts={setProducts} />
                 )}
             </Stack.Screen>
         </Stack.Navigator>

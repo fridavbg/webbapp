@@ -112,11 +112,7 @@ export default function App() {
                         <Tab.Screen name="Faktura" component={Invoices} />
                     ) : (
                         <Tab.Screen name="Login">
-                            {() => (
-                                <Auth
-                                    setIsLoggedIn={setIsLoggedIn}
-                                />
-                            )}
+                            {() => <Auth setIsLoggedIn={setIsLoggedIn} />}
                         </Tab.Screen>
                     )}
                 </Tab.Navigator>

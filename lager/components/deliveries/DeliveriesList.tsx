@@ -21,23 +21,13 @@ export default function DeliveriesList({ route, navigation }) {
 
     const listOfDeliveries = allDeliveries.map((delivery, index) => {
         return (
-            <TouchableOpacity
-                style={Base.button}
-                key={index}
-                onPress={() => {
-                    navigation.navigate("Deliveries", {
-                        delivery: delivery,
-                    });
-                }}
-            >
-                <Text style={Typography.btnText}>
-                    ID: {delivery.id} {"\n"}
-                    PRODUCT_ID: {delivery.product_id} {"\n"}
-                    ANTAL: {delivery.amount} {"\n"}
-                    LEVERANSDATUM: {delivery.delivery_date} {"\n"}
-                    KOMMENTAR: {delivery.comment} {"\n"}
-                </Text>
-            </TouchableOpacity>
+            <Text style={Base.listItem}>
+                ID: {delivery.id} {"\n"}
+                PRODUCT_ID: {delivery.product_id} {"\n"}
+                ANTAL: {delivery.amount} {"\n"}
+                LEVERANSDATUM: {delivery.delivery_date} {"\n"}
+                KOMMENTAR: {delivery.comment} {"\n"}
+            </Text>
         );
     });
 

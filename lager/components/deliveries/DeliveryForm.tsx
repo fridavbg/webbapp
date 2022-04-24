@@ -1,4 +1,3 @@
-// components/DeliveryForm.tsx
 import { useState } from "react";
 import {
     ScrollView,
@@ -8,7 +7,7 @@ import {
     View,
     Platform,
 } from "react-native";
-import { Base, Typography, Forms } from "../../styles";
+import { Base, Typography, Form } from "../../styles";
 import DateTimePicker from "@react-native-community/datetimepicker";
 import Delivery from "../../interfaces/delivery";
 import deliveryModel from "../../models/deliveries";
