@@ -4,7 +4,12 @@ import { Base, Typography } from "../../styles";
 import invoiceModel from "../../models/invoices";
 import authModel from "../../models/auth";
 
-export default function InvoicesList({ route, navigation, invoices, setInvoices }) {
+export default function InvoicesList({
+    route,
+    navigation,
+    invoices,
+    setInvoices,
+}) {
     const { reload } = route.params || true;
 
     if (reload) {
@@ -18,10 +23,20 @@ export default function InvoicesList({ route, navigation, invoices, setInvoices 
     }, []);
 
     const invoiceList = invoices.map((invoice, index) => {
+        if (invoice.due_date !== null) {
+            return (
+                <Text key={index} style={Base.listItem}>
+                    ID: {invoice.id} {"\n"}
+                    NAMN: {invoice.name} {"\n"}
+                    DATUM: {invoice.due_date} {"\n"}
+                </Text>
+            );
+        }
         return (
             <Text key={index} style={Base.listItem}>
                 ID: {invoice.id} {"\n"}
                 NAMN: {invoice.name} {"\n"}
+                DATUM: Inget datum {"\n"}
             </Text>
         );
     });
@@ -34,9 +49,9 @@ export default function InvoicesList({ route, navigation, invoices, setInvoices 
                     {invoiceList}
                     <TouchableOpacity
                         style={Base.button}
-                        // onPress={() => {
-                        //     navigation.navigate("InvoiceForm");
-                        // }}
+                        onPress={() => {
+                            navigation.navigate("InvoiceForm");
+                        }}
                     >
                         <Text style={Typography.btnText}>Skapa ny faktura</Text>
                     </TouchableOpacity>
@@ -44,7 +59,7 @@ export default function InvoicesList({ route, navigation, invoices, setInvoices 
                         style={Base.button}
                         onPress={() => {
                             authModel.logout();
-                            navigation.navigate("Lager", {reload : true});
+                            navigation.navigate("Lager", { reload: true });
                         }}
                     >
                         <Text style={Typography.btnText}>Logga ut</Text>
@@ -60,26 +75,20 @@ export default function InvoicesList({ route, navigation, invoices, setInvoices 
                 <Text style={Typography.errMsg}>Inga fakturor</Text>
                 <TouchableOpacity
                     style={Base.button}
-                    // onPress={() => {
-                    //     navigation.navigate("InvoiceForm");
-                    // }}
+                    onPress={() => {
+                        navigation.navigate("InvoiceForm");
+                    }}
                 >
-                    <Text
-                        style={Typography.btnText}
-                    >Skapa ny faktura</Text>
+                    <Text style={Typography.btnText}>Skapa ny faktura</Text>
                 </TouchableOpacity>
                 <TouchableOpacity
                     style={Base.button}
                     onPress={() => {
                         authModel.logout();
-                        navigation.navigate("Lager", {reload : true});
+                        navigation.navigate("Lager", { reload: true });
                     }}
                 >
-                    <Text
-                        style={Typography.btnText}
-                    >
-                        Logga ut
-                    </Text>
+                    <Text style={Typography.btnText}>Logga ut</Text>
                 </TouchableOpacity>
             </View>
         </ScrollView>
