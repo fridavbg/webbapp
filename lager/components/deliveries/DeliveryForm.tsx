@@ -66,7 +66,6 @@ export default function DeliveryForm({ navigation }) {
 
     async function addDelivery(props) {
         await deliveryModel.addDelivery(delivery);
-        /// Stock uppdateras EJ
         const updatedProduct = {
             ...currentProduct,
             stock: (currentProduct.stock || 0) + (delivery.amount || 0),
