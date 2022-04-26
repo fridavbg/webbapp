@@ -27,6 +27,9 @@ const auth = {
         });
         const result = await response.json();
 
+        // CHECK USER OBJECT AT LOGIN
+        console.log(result);
+        
         await storage.storeToken(result.data.token);
 
         return result.data.message;

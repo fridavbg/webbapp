@@ -6,11 +6,15 @@ import DateDropDown from "../incl/DateDropDown";
 import OrderDropDown from "../order/OrderDropDowm";
 
 import orderModel from "../../models/orders";
+import invoiceModel from "../../models/invoices";
 
 export default function InvoiceForm({ navigation }) {
+    const [invoice, setInvoice] = useState<Partial<Invoice>>({});
     const [currentOrder, setCurrentOrder] = useState<Partial<Order>>({});
 
-    async function createInvoice(props) {
+    async function addInvoice(props) {
+        await invoiceModel.addInvoice(invoice);
+
         const updatedOrder = {
             ...currentOrder,
             status_id: 600,
@@ -28,7 +32,7 @@ export default function InvoiceForm({ navigation }) {
                 currentOrder={currentOrder}
             />
             <DateDropDown />
-            <TouchableOpacity style={{ ...Base.button }} onPress={createInvoice}>
+            <TouchableOpacity style={{ ...Base.button }} onPress={addInvoice}>
                 <Text style={{ ...Typography.btnText }}>Skapa ny faktura</Text>
             </TouchableOpacity>
         </ScrollView>

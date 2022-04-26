@@ -24,11 +24,11 @@ export default function OrderDropDown(props) {
     if (orderList.length > 1) {
         return (
             <Picker
-            // selectedValue={props.order?.order_id}
-            // onValueChange={(itemValue) => {
-            //     props.setOrders({ ...props.order, order_id: itemValue });
-            //     props.setCurrentOrder[orderHash[itemValue]];
-            // }}
+                selectedValue={props.order?.order_id}
+                onValueChange={(itemValue) => {
+                    props.setOrders({ ...props.order, order_id: itemValue });
+                    props.setCurrentOrder[orderHash[itemValue]];
+                }}
             >
                 {orderList}
             </Picker>

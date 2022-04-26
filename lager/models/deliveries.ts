@@ -2,6 +2,11 @@ import config from "../config/config.json";
 import Delivery from "../interfaces/delivery";
 
 const deliveries = {
+
+    /**
+     * GET all deliveries
+     * @returns array
+     */
     getDeliveries: async function getDeliveries(): Promise<Delivery[]> {
         const response = await fetch(
             `${config.base_url}/deliveries?api_key=${config.api_key}`
@@ -11,6 +16,10 @@ const deliveries = {
         return result.data;
     },
 
+    /**
+     * Create new delivery
+     * @param delivery 
+     */
     addDelivery: async function addDelivery(delivery: Partial<Delivery>) {
         console.log(delivery);
         const newDelivery = {
