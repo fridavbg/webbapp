@@ -34,7 +34,10 @@ export default function DateDropDown(props) {
                 <DateTimePicker
                     onChange={(_event: any, date: any) => {
                         setDropDownDate(date || new Date());
-
+                        props.setInvoice({
+                            ...props.invoice,
+                            delivery_date: date.toLocaleDateString("se-SV"),
+                        })
                         setShow(false);
                     }}
                     value={dropDownDate}
