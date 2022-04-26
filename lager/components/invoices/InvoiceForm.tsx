@@ -2,7 +2,7 @@ import { useState } from "react";
 
 import { ScrollView, Text, TouchableOpacity } from "react-native";
 import { Base, Typography } from "../../styles";
-import DateDropDown from "../incl/DateDropDown";
+import DateDropDown from "./InvoiceDateDropDown";
 import OrderDropDown from "../order/OrderDropDowm";
 
 import orderModel from "../../models/orders";
@@ -31,7 +31,10 @@ export default function InvoiceForm({ navigation }) {
                 setCurrentOrder={setCurrentOrder}
                 currentOrder={currentOrder}
             />
-            <DateDropDown />
+            <DateDropDown
+                invoice={invoice}
+                setInvoice={setInvoice}
+            />
             <TouchableOpacity style={{ ...Base.button }} onPress={addInvoice}>
                 <Text style={{ ...Typography.btnText }}>Skapa ny faktura</Text>
             </TouchableOpacity>

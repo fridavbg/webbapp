@@ -13,11 +13,8 @@ export default function OrderDropDown(props) {
     const [orders, setOrders] = useState<Orders[]>([]);
     let orderHash: any = {};
 
-    /**
-     * Retrieve orders as a list
-     */
-
     useEffect(async () => {
+        console.log(orders);
         setOrders(await orderModel.getOrders());
     }, []);
 
@@ -38,10 +35,10 @@ export default function OrderDropDown(props) {
         return (
             <Picker
                 selectedValue={orders?.id}
-                onValueChange={(itemValue) => {
-                    setOrders({ ...orders, id: itemValue });
-                    props.setCurrentOrder[orderHash[itemValue]];
-                }}
+                // onValueChange={(itemValue) => {
+                //     setOrders({ ...orders, id: itemValue });
+                //     props.setCurrentOrder[orderHash[itemValue]];
+                // }}
             >
                 {orderList}
             </Picker>
