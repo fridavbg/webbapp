@@ -15,10 +15,12 @@ export default function InvoiceForm({ navigation }) {
     async function addInvoice(props) {
         await invoiceModel.addInvoice(invoice);
 
+        // STATUS NOT CHANGING
         const updatedOrder = {
             ...currentOrder,
-            status_id: 600,
+            status_id: currentOrder.status_id = 600,
         };
+
         await orderModel.updateOrder(updatedOrder);
 
         navigation.navigate("Faktura", { reload: true });

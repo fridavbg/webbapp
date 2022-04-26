@@ -25,6 +25,10 @@ export default function DateDropDown(props) {
                     onPress={showDatePicker}
                     onChange={(_event: any, date: any) => {
                         setDropDownDate(date || new Date());
+                        props.setDelivery({
+                            ...props.delivery,
+                            creation_date: date.toLocaleDateString("se-SV"),
+                        });
                     }}
                 >
                     <Text style={Typography.btnText}>Visa datumväljare</Text>
@@ -36,7 +40,7 @@ export default function DateDropDown(props) {
                         setDropDownDate(date || new Date());
                         props.setInvoice({
                             ...props.invoice,
-                            delivery_date: date.toLocaleDateString("se-SV"),
+                            creation_date: Moment(date).format("DD-MM-YYYY"),
                         })
                         setShow(false);
                     }}

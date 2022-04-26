@@ -14,7 +14,6 @@ export default function OrderDropDown(props) {
     const [invoices, setInvoice] = useState<Invoices[]>([]);
     const [orders, setOrders] = useState<Orders[]>([]);
     let orderHash: any = {};
-    let invoiceHash: any = {};
 
     useEffect(async () => {
         console.log(orders);

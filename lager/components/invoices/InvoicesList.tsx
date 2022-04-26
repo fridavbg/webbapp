@@ -23,12 +23,12 @@ export default function InvoicesList({
     }, []);
 
     const invoiceList = invoices.map((invoice, index) => {
-        if (invoice.due_date !== null) {
+        if (invoice.creation_date !== null) {
             return (
                 <Text key={index} style={Base.listItem}>
                     ID: {invoice.id} {"\n"}
                     NAMN: {invoice.name} {"\n"}
-                    DATUM: {invoice.due_date} {"\n"}
+                    DATUM: {invoice.creation_date} {"\n"}
                 </Text>
             );
         }
