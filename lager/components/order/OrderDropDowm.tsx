@@ -1,32 +1,45 @@
 import { Picker } from "@react-native-picker/picker";
 import { useState, useEffect } from "react";
-import { View, Text, TouchableOpacity, ScrollView } from "react-native";
+import { Text } from "react-native";
 import orderModel from "../../models/orders";
-import { Base, Typography } from "../../styles";
 
+/**
+ * Create dropdown for orders
+ * KRASHAR !!!
+ * TypeError: undefined is not a function (near '...orders.map...')
+ * @returns Picker || string
+ */
 export default function OrderDropDown(props) {
     const [orders, setOrders] = useState<Orders[]>([]);
     let orderHash: any = {};
 
+    /**
+     * Retrieve orders as a list
+     */
+
     useEffect(async () => {
         setOrders(await orderModel.getOrders());
-    });
+    }, []);
+
+    /**
+     *  Create orderlist to be displayed in Picker
+     * @returns Picker.Item || message
+     */
 
     const orderList = orders.map((order, index) => {
-        if (order.status !== "Fakturerad") {
-            return (
-                <Picker.Item key={index} label={order.name} value={order.id} />
-            );
-        }
-        return <Text>All orders have been invoiced</Text>;
+        orderHash[order.id] = order;
+        // if (order.status !== "Fakturerad") {
+        return <Picker.Item key={index} label={order.name} value={order.id} />;
+        // }
+        // return <Text>All orders have been invoiced</Text>;
     });
 
     if (orderList.length > 1) {
         return (
             <Picker
-                selectedValue={props.order?.order_id}
+                selectedValue={orders?.id}
                 onValueChange={(itemValue) => {
-                    props.setOrders({ ...props.order, order_id: itemValue });
+                    setOrders({ ...orders, id: itemValue });
                     props.setCurrentOrder[orderHash[itemValue]];
                 }}
             >

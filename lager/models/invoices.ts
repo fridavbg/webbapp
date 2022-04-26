@@ -3,6 +3,7 @@ import storage from "./storage";
 import Invoice from "../interfaces/invoice";
 
 const invoices = {
+
     /**
      * Get all orders 
      * @returns array
@@ -33,7 +34,7 @@ const invoices = {
         console.log(invoice);
         const newInvoice = {
             ...invoice,
-            id: invoice.id,
+            order_id: invoice.order_id,
             api_key: config.api_key
         };
         try {
