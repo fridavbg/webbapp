@@ -30,6 +30,8 @@ export default function InvoiceForm({ navigation }) {
             <OrderDropDown
                 setCurrentOrder={setCurrentOrder}
                 currentOrder={currentOrder}
+                invoice={invoice}
+                setInvoice={setInvoice}
             />
             <DateDropDown
                 invoice={invoice}

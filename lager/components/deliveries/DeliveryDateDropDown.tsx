@@ -1,5 +1,13 @@
 import { useState } from "react";
-import { ScrollView, Text, TextInput, TouchableOpacity } from "react-native";
+import {
+    ScrollView,
+    Text,
+    TextInput,
+    View,
+    TouchableOpacity,
+} from "react-native";
+import { Base, Typography } from "../../styles";
+
 import Moment from "moment";
 
 import DateTimePicker from "@react-native-community/datetimepicker";
