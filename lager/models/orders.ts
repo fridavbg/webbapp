@@ -36,6 +36,8 @@ const orders = {
     },
     
     updateOrder: async function updateOrder(order: Partial<Order>) {
+        console.log(order);
+
         try {
             await fetch(`${config.base_url}/orders`, {
                 body: JSON.stringify(order),

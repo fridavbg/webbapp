@@ -7,7 +7,7 @@ const Stack = createNativeStackNavigator();
 export default function Stock({ products, setProducts }) {
     return (
         <Stack.Navigator initialRouteName="Stock">
-            <Stack.Screen name="Lagerförteckning">
+            <Stack.Screen name="Inventory">
                 {(screenProps) => (
                     <StockList
                         {...screenProps}

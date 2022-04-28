@@ -18,7 +18,7 @@ export default function InvoiceForm({ navigation }) {
         // STATUS NOT CHANGING
         const updatedOrder = {
             ...currentOrder,
-            status_id: currentOrder.status_id = 600,
+            status_id: 600,
         };
 
         await orderModel.updateOrder(updatedOrder);

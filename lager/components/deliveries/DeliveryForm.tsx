@@ -1,10 +1,5 @@
 import { useState } from "react";
-import {
-    ScrollView,
-    Text,
-    TextInput,
-    TouchableOpacity,
-} from "react-native";
+import { ScrollView, Text, TextInput, TouchableOpacity } from "react-native";
 import { Base, Typography, Form } from "../../styles";
 import Delivery from "../../interfaces/delivery";
 import deliveryModel from "../../models/deliveries";
@@ -30,24 +25,20 @@ export default function DeliveryForm({ navigation }) {
 
     return (
         <ScrollView style={{ ...Base.container }}>
-            <Text style={{ ...Typography.title }}>
-                Ny inleverans
-            </Text>
-            <Text style={{ ...Typography.label }}>
-                Produkt
-            </Text>
+            <Text style={{ ...Typography.title }}>New delivery</Text>
+            <Text style={{ ...Typography.label }}>Book</Text>
             <ProductDropDown
                 delivery={delivery}
                 setDelivery={setDelivery}
                 setCurrentProduct={setCurrentProduct}
             />
-            <Text style={{ ...Typography.label }}>Datum</Text>
+            <Text style={{ ...Typography.label }}>Date</Text>
             <DateDropDown
                 delivery={delivery}
                 setDelivery={setDelivery}
                 setCurrentProduct={setCurrentProduct}
             />
-            <Text style={{ ...Typography.label }}>Antal</Text>
+            <Text style={{ ...Typography.label }}>Amount</Text>
             <TextInput
                 style={{ ...Form.input }}
                 value={Number}
@@ -57,7 +48,7 @@ export default function DeliveryForm({ navigation }) {
                 value={delivery?.amount?.toString()}
                 keyboardType="numeric"
             />
-            <Text style={{ ...Typography.label }}>Kommentar</Text>
+            <Text style={{ ...Typography.label }}>Comment</Text>
             <TextInput
                 style={{ ...Form.input }}
                 value={Text}
@@ -73,7 +64,7 @@ export default function DeliveryForm({ navigation }) {
                     addDelivery({ ...delivery });
                 }}
             >
-                <Text style={{ ...Typography.btnText }}>Gör inleverans</Text>
+                <Text style={{ ...Typography.btnText }}>Make delivery</Text>
             </TouchableOpacity>
         </ScrollView>
     );

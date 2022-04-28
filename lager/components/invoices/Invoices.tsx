@@ -11,7 +11,7 @@ export default function Invoices() {
     const [invoices, setInvoices] = useState([]);
     return (
         <Stack.Navigator initialRouteName="Faktura">
-            <Stack.Screen name="Fakturor">
+            <Stack.Screen name="Invoices">
                 {(screenProps) => (
                     <InvoicesList
                         {...screenProps}

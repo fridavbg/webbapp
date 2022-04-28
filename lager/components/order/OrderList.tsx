@@ -44,7 +44,7 @@ export default function OrderList({ route, navigation }) {
     return (
         <ScrollView>
             <View>
-                <Text style={Typography.title}>Ordrar redo att plockas</Text>
+                <Text style={Typography.title}>Orders to be picked</Text>
                 {listOfOrders}
             </View>
         </ScrollView>

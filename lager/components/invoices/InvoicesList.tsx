@@ -27,16 +27,16 @@ export default function InvoicesList({
             return (
                 <Text key={index} style={Base.listItem}>
                     ID: {invoice.id} {"\n"}
-                    NAMN: {invoice.name} {"\n"}
-                    DATUM: {invoice.creation_date} {"\n"}
+                    NAME: {invoice.name} {"\n"}
+                    DATE: {invoice.creation_date} {"\n"}
                 </Text>
             );
         }
         return (
             <Text key={index} style={Base.listItem}>
                 ID: {invoice.id} {"\n"}
-                NAMN: {invoice.name} {"\n"}
-                DATUM: Inget datum {"\n"}
+                NAME: {invoice.name} {"\n"}
+                DATE: Inget datum {"\n"}
             </Text>
         );
     });
@@ -45,7 +45,7 @@ export default function InvoicesList({
         return (
             <ScrollView>
                 <View style={Base.container}>
-                    <Text style={Typography.title}>Faktura</Text>
+                    <Text style={Typography.title}>Invoice</Text>
                     {invoiceList}
                     <TouchableOpacity
                         style={Base.button}
@@ -53,7 +53,7 @@ export default function InvoicesList({
                             navigation.navigate("InvoiceForm");
                         }}
                     >
-                        <Text style={Typography.btnText}>Skapa ny faktura</Text>
+                        <Text style={Typography.btnText}>New invoice</Text>
                     </TouchableOpacity>
                     <TouchableOpacity
                         style={Base.button}
@@ -62,7 +62,7 @@ export default function InvoicesList({
                             navigation.navigate("Lager", { reload: true });
                         }}
                     >
-                        <Text style={Typography.btnText}>Logga ut</Text>
+                        <Text style={Typography.btnText}>Log out</Text>
                     </TouchableOpacity>
                 </View>
             </ScrollView>

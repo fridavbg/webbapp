@@ -1,6 +1,8 @@
 import config from "../config/config.json";
 import storage from "./storage";
 import Invoice from "../interfaces/invoice";
+import Order from "../interfaces/order";
+import orders from "./orders";
 
 const invoices = {
 

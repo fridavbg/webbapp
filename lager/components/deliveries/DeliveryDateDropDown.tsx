@@ -34,7 +34,7 @@ export default function DateDropDown(props) {
                         });
                     }}
                 >
-                    <Text style={Typography.btnText}>Visa datumväljare</Text>
+                    <Text style={Typography.btnText}>Choose a date</Text>
                 </TouchableOpacity>
             )}
             {(show || Platform.OS === "ios") && (

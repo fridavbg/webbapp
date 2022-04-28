@@ -13,7 +13,7 @@ import Home from "./components/incl/Home";
 import Auth from "./components/auth/Auth";
 import AuthModel from "./models/auth";
 import Stock from "./components/stock/Stock";
-import Plock from "./components/products/Pick";
+import Pick from "./components/products/Pick";
 import Deliveries from "./components/deliveries/Delivieries";
 import Invoices from "./components/invoices/Invoices";
 import Header from "./components/incl/Header";
@@ -57,12 +57,12 @@ export default function App() {
     };
 
     const routeIcons = {
-        Lager: "home",
-        Plock: "bars",
+        Home: "home",
+        Pick: "bars",
         Stock: "book",
-        Inleveranser: "star",
+        Deliveries: "star",
         Login: "login",
-        Faktura: "paperclip",
+        Invoices: "paperclip",
     };
 
     return (
@@ -85,10 +85,10 @@ export default function App() {
                         tabBarInactiveTintColor: "gray",
                     })}
                 >
-                    <Tab.Screen name="Lager">{() => <Home />}</Tab.Screen>
-                    <Tab.Screen name="Plock">
+                    <Tab.Screen name="Home">{() => <Home />}</Tab.Screen>
+                    <Tab.Screen name="Pick">
                         {() => (
-                            <Plock
+                            <Pick
                                 products={products}
                                 setProducts={setProducts}
                             />
@@ -102,11 +102,11 @@ export default function App() {
                             />
                         )}
                     </Tab.Screen>
-                    <Tab.Screen name="Inleveranser">
+                    <Tab.Screen name="Deliveries">
                         {() => <Deliveries />}
                     </Tab.Screen>
                     {isLoggedIn ? (
-                        <Tab.Screen name="Faktura" component={Invoices} />
+                        <Tab.Screen name="Invoices" component={Invoices} />
                     ) : (
                         <Tab.Screen name="Logga in">
                             {() => <Auth setIsLoggedIn={setIsLoggedIn} />}
