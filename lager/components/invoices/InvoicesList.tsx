@@ -23,20 +23,10 @@ export default function InvoicesList({
     }, []);
 
     const invoiceList = invoices.map((invoice, index) => {
-        if (invoice.creation_date !== null) {
-            return (
-                <Text key={index} style={Base.listItem}>
-                    ID: {invoice.id} {"\n"}
-                    NAME: {invoice.name} {"\n"}
-                    DATE: {invoice.creation_date} {"\n"}
-                </Text>
-            );
-        }
         return (
             <Text key={index} style={Base.listItem}>
                 ID: {invoice.id} {"\n"}
                 NAME: {invoice.name} {"\n"}
-                DATE: Inget datum {"\n"}
             </Text>
         );
     });

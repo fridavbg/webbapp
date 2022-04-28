@@ -21,14 +21,14 @@ export default function InvoiceForm({ navigation }) {
             status_id: 600,
         };
 
-        await orderModel.updateOrder(updatedOrder);
-
-        navigation.navigate("Faktura", { reload: true });
+        await orderModel.invoiceOrder(updatedOrder);
+        // NOT NAVIGATING TO LIST
+        navigation.navigate("Invoice List", { reload: true });
     }
 
     return (
         <ScrollView style={{ ...Base.container }}>
-            <Text style={{ ...Typography.title }}>Välj en order</Text>
+            <Text style={{ ...Typography.title }}>Pick an order to invoice</Text>
             <OrderDropDown
                 setCurrentOrder={setCurrentOrder}
                 currentOrder={currentOrder}
@@ -40,7 +40,7 @@ export default function InvoiceForm({ navigation }) {
                 setInvoice={setInvoice}
             />
             <TouchableOpacity style={{ ...Base.button }} onPress={addInvoice}>
-                <Text style={{ ...Typography.btnText }}>Skapa ny faktura</Text>
+                <Text style={{ ...Typography.btnText }}>New Invoice</Text>
             </TouchableOpacity>
         </ScrollView>
     );

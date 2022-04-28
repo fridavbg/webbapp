@@ -10,8 +10,8 @@ const Stack = createNativeStackNavigator();
 export default function Invoices() {
     const [invoices, setInvoices] = useState([]);
     return (
-        <Stack.Navigator initialRouteName="Faktura">
-            <Stack.Screen name="Invoices">
+        <Stack.Navigator initialRouteName="Invoices">
+            <Stack.Screen name="Invoice List">
                 {(screenProps) => (
                     <InvoicesList
                         {...screenProps}

@@ -15,7 +15,6 @@ const orders = {
     },
 
     pickOrder: async function pickOrder(order: Partial<Order>) {
-        // TODO: Minska lagersaldo för de orderrader som finns i ordern
         await Promise.all(order.order_items.map(async (order_item: Partial<Order>) => { 
             let changedProduct = {
                 id: order_item.product_id,
@@ -25,7 +24,6 @@ const orders = {
             };
             await products.updateProduct(changedProduct)
         }));
-        // TODO: Ändra status för ordern till packad
         let changedOrder = {
             id: order.id,
             name: order.name,
@@ -34,10 +32,20 @@ const orders = {
         };
         await orders.updateOrder(changedOrder)
     },
+
+    invoiceOrder: async function invoiceOrder(order: Partial<Order>) {
+        console.log("ORDER: ");
+        console.log(order);
+        let changedOrder = {
+            id: order.id,
+            name: order.name,
+            status_id: 600,
+            api_key: config.api_key,
+        };
+        await orders.updateOrder(changedOrder)
+    },
     
     updateOrder: async function updateOrder(order: Partial<Order>) {
-        console.log(order);
-
         try {
             await fetch(`${config.base_url}/orders`, {
                 body: JSON.stringify(order),

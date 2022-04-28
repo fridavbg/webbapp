@@ -27,11 +27,11 @@ export default function DateDropDown(props) {
                         setDropDownDate(date || new Date());
                         props.setDelivery({
                             ...props.delivery,
-                            creation_date: date.toLocaleDateString("se-SV"),
+                            due_date: date.toLocaleDateString("se-SV"),
                         });
                     }}
                 >
-                    <Text style={Typography.btnText}>Visa datumväljare</Text>
+                    <Text style={Typography.btnText}>Choose a due date</Text>
                 </TouchableOpacity>
             )}
             {(show || Platform.OS === "ios") && (
@@ -40,7 +40,7 @@ export default function DateDropDown(props) {
                         setDropDownDate(date || new Date());
                         props.setInvoice({
                             ...props.invoice,
-                            creation_date: Moment(date).format("DD-MM-YYYY"),
+                            due_date: Moment(date).format("DD-MM-YYYY"),
                         })
                         setShow(false);
                     }}
