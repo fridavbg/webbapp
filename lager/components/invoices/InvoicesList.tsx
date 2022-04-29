@@ -49,7 +49,7 @@ export default function InvoicesList({
                         style={Base.button}
                         onPress={() => {
                             authModel.logout();
-                            navigation.navigate("Lager", { reload: true });
+                            navigation.navigate("Home", { reload: true });
                         }}
                     >
                         <Text style={Typography.btnText}>Log out</Text>
@@ -61,24 +61,24 @@ export default function InvoicesList({
     return (
         <ScrollView>
             <View style={Base.container}>
-                <Text style={Typography.title}>Faktura</Text>
-                <Text style={Typography.errMsg}>Inga fakturor</Text>
+                <Text style={Typography.title}>Invoices</Text>
+                <Text style={Typography.errMsg}>No Invoices</Text>
                 <TouchableOpacity
                     style={Base.button}
                     onPress={() => {
                         navigation.navigate("InvoiceForm");
                     }}
                 >
-                    <Text style={Typography.btnText}>Skapa ny faktura</Text>
+                    <Text style={Typography.btnText}>New Invoice</Text>
                 </TouchableOpacity>
                 <TouchableOpacity
                     style={Base.button}
                     onPress={() => {
                         authModel.logout();
-                        navigation.navigate("Lager", { reload: true });
+                        navigation.navigate("Home", { reload: true });
                     }}
                 >
-                    <Text style={Typography.btnText}>Logga ut</Text>
+                    <Text style={Typography.btnText}>Log out</Text>
                 </TouchableOpacity>
             </View>
         </ScrollView>

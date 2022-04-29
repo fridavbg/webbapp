@@ -8,7 +8,7 @@ import OrderDropDown from "../order/OrderDropDowm";
 import orderModel from "../../models/orders";
 import invoiceModel from "../../models/invoices";
 
-export default function InvoiceForm({ navigation }) {
+export default function InvoiceForm({ route, navigation }) {
     const [invoice, setInvoice] = useState<Partial<Invoice>>({});
     const [currentOrder, setCurrentOrder] = useState<Partial<Order>>({});
 
@@ -22,7 +22,6 @@ export default function InvoiceForm({ navigation }) {
         };
 
         await orderModel.invoiceOrder(updatedOrder);
-        // NOT NAVIGATING TO LIST
         navigation.navigate("Invoice List", { reload: true });
     }
 
@@ -34,13 +33,14 @@ export default function InvoiceForm({ navigation }) {
                 currentOrder={currentOrder}
                 invoice={invoice}
                 setInvoice={setInvoice}
+                route={route}
             />
             <DateDropDown
                 invoice={invoice}
                 setInvoice={setInvoice}
             />
             <TouchableOpacity style={{ ...Base.button }} onPress={addInvoice}>
-                <Text style={{ ...Typography.btnText }}>New Invoice</Text>
+                <Text style={{ ...Typography.btnText }}>Create Invoice</Text>
             </TouchableOpacity>
         </ScrollView>
     );

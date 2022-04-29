@@ -38,7 +38,6 @@ const orders = {
         console.log(order);
         let changedOrder = {
             id: order.id,
-            name: order.name,
             status_id: 600,
             api_key: config.api_key,
         };
