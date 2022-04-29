@@ -1,8 +1,8 @@
 import { Picker } from "@react-native-picker/picker";
 import { useState, useEffect } from "react";
-import { Text } from "react-native";
+import { View, Text } from "react-native";
 import orderModel from "../../models/orders";
-import invoiceModel from "../../models/invoices";
+import { Typography } from "../../styles";
 
 /**
  * Create dropdown for orders
@@ -11,9 +11,9 @@ import invoiceModel from "../../models/invoices";
 export default function OrderDropDown(props) {
     const [orders, setOrders] = useState<Orders[]>([]);
     let orderHash: any = {};
+    let packedOrders = false;
 
     useEffect(async () => {
-        console.log(orders);
         setOrders(await orderModel.getOrders());
     }, []);
 
@@ -23,11 +23,16 @@ export default function OrderDropDown(props) {
      */
 
     const orderList = orders.map((order, index) => {
-        orderHash[order.id] = order;
-        return <Picker.Item key={index} label={order.name} value={order.id} />;
+        if (order.status === "Packad") {
+            packedOrders = True;
+        }
+            orderHash[order.id] = order;
+            return (
+                <Picker.Item key={index} label={order.name} value={order.id} />
+            );
     });
 
-    if (orderList.length > 1) {
+    if (packedOrders) { 
         return (
             <Picker
                 selectedValue={props.invoice?.order_id}
@@ -36,9 +41,10 @@ export default function OrderDropDown(props) {
                     props.setCurrentOrder[orderHash[itemValue]];
                 }}
             >
-                {orderList}
             </Picker>
         );
     }
-    return <Text>Inga ordrar tillgängliga</Text>;
+    return (
+        <Text style={Typography.errMsg}>No orders have been picked</Text>
+    )
 }
