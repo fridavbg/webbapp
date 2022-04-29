@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import { Base, Typography } from "../../styles";
 import invoiceModel from "../../models/invoices";
 import authModel from "../../models/auth";
+import InvoiceTable from "./InvoiceTable";
 
 export default function InvoicesList({
     route,
@@ -37,6 +38,7 @@ export default function InvoicesList({
                 <View style={Base.container}>
                     <Text style={Typography.title}>Invoice</Text>
                     {invoiceList}
+                    <InvoiceTable invoices={invoices} />
                     <TouchableOpacity
                         style={Base.button}
                         onPress={() => {
