@@ -37,8 +37,12 @@ export default function InvoicesList({
             <ScrollView>
                 <View style={Base.container}>
                     <Text style={Typography.title}>Invoice</Text>
-                    {invoiceList}
-                    <InvoiceTable invoices={invoices} />
+                    {/* {invoiceList} */}
+                    <InvoiceTable
+                        route={route}
+                        invoices={invoices}
+                        setInvoices={setInvoices}
+                    />
                     <TouchableOpacity
                         style={Base.button}
                         onPress={() => {
