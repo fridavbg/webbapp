@@ -48,8 +48,8 @@ export default function InvoicesList({
                     </TouchableOpacity>
                     <TouchableOpacity
                         style={Base.button}
-                        onPress={() => {
-                            authModel.logout();
+                        onPress={async () => {
+                            await logOut();
                             navigation.navigate("Home", { reload: true });
                         }}
                     >
