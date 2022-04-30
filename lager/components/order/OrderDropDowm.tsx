@@ -12,7 +12,6 @@ import { Typography } from "../../styles";
 export default function OrderDropDown(props) {
     const [orders, setOrders] = useState<Orders[]>([]);
     let orderHash: any = {};
-    let isPacked = false;
 
     // RELOAD? 
 
@@ -25,17 +24,14 @@ export default function OrderDropDown(props) {
      * @returns Picker.Item || message
      */
 
-    const orderList = orders.map((order, index) => {
-        if (order.status === "Packad") {
-            isPacked = true;
+    const orderList = orders.filter((order) => (order.status_id === 200)).map((order, index) => {
             orderHash[order.id] = order;
             return (
                 <Picker.Item key={index} label={order.name} value={order.id} />
             );
-        }
     });
 
-    if (isPacked) {
+    if (orderList.length > 0) {
         return (
             <Picker
                 selectedValue={props.invoice?.order_id}

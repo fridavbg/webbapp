@@ -10,6 +10,7 @@ export default function InvoicesList({
     navigation,
     invoices,
     setInvoices,
+    setIsLoggedIn,
 }) {
     const { reload } = route.params || true;
 
@@ -23,21 +24,15 @@ export default function InvoicesList({
         reloadInvoices();
     }, []);
 
-    const invoiceList = invoices.map((invoice, index) => {
-        return (
-            <Text key={index} style={Base.listItem}>
-                ID: {invoice.id} {"\n"}
-                NAME: {invoice.name} {"\n"}
-            </Text>
-        );
-    });
+    async function logOut() {
+        authModel.logout();
+        setIsLoggedIn(false);
+    }
 
-    if (invoiceList.length > 0) {
         return (
             <ScrollView>
                 <View style={Base.container}>
                     <Text style={Typography.title}>Invoice</Text>
-                    {/* {invoiceList} */}
                     <InvoiceTable
                         route={route}
                         invoices={invoices}
@@ -63,30 +58,4 @@ export default function InvoicesList({
                 </View>
             </ScrollView>
         );
-    }
-    return (
-        <ScrollView>
-            <View style={Base.container}>
-                <Text style={Typography.title}>Invoices</Text>
-                <Text style={Typography.errMsg}>No Invoices</Text>
-                <TouchableOpacity
-                    style={Base.button}
-                    onPress={() => {
-                        navigation.navigate("InvoiceForm");
-                    }}
-                >
-                    <Text style={Typography.btnText}>New Invoice</Text>
-                </TouchableOpacity>
-                <TouchableOpacity
-                    style={Base.button}
-                    onPress={() => {
-                        authModel.logout();
-                        navigation.navigate("Home", { reload: true });
-                    }}
-                >
-                    <Text style={Typography.btnText}>Log out</Text>
-                </TouchableOpacity>
-            </View>
-        </ScrollView>
-    );
 }

@@ -7,7 +7,7 @@ import InvoiceForm from "./InvoiceForm";
 
 const Stack = createNativeStackNavigator();
 
-export default function Invoices() {
+export default function Invoices({ setIsLoggedIn }) {
     const [invoices, setInvoices] = useState([]);
     return (
         <Stack.Navigator initialRouteName="Invoices">
@@ -17,6 +17,7 @@ export default function Invoices() {
                         {...screenProps}
                         invoices={invoices}
                         setInvoices={setInvoices}
+                        setIsLoggedIn={setIsLoggedIn}
                     />
                 )}
             </Stack.Screen>

@@ -18,6 +18,8 @@ import Deliveries from "./components/deliveries/Delivieries";
 import Invoices from "./components/invoices/Invoices";
 import Header from "./components/incl/Header";
 import Footer from "./components/incl/Footer";
+
+// NAVIGATOR
 const Tab = createBottomTabNavigator();
 
 export default function App() {
@@ -47,7 +49,7 @@ export default function App() {
         );
     }
 
-    // NAVBAR TEMA
+    // NAVBAR THEME
     const MyTheme = {
         ...DefaultTheme,
         colors: {
@@ -72,7 +74,8 @@ export default function App() {
                 <Tab.Navigator
                     screenOptions={({ route }) => ({
                         tabBarIcon: ({ focused, color, size }) => {
-                            let iconName = routeIcons[route.name] || "exclamation";
+                            let iconName =
+                                routeIcons[route.name] || "exclamation";
                             return (
                                 <AntDesign
                                     name={iconName}
@@ -106,7 +109,9 @@ export default function App() {
                         {() => <Deliveries />}
                     </Tab.Screen>
                     {isLoggedIn ? (
-                        <Tab.Screen name="Invoices" component={Invoices} />
+                        <Tab.Screen name="Invoices">
+                            {() => <Invoices setIsLoggedIn={setIsLoggedIn} />}
+                        </Tab.Screen>
                     ) : (
                         <Tab.Screen name="Logga in">
                             {() => <Auth setIsLoggedIn={setIsLoggedIn} />}
