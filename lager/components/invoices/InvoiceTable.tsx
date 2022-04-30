@@ -2,36 +2,26 @@ import { Text } from "react-native";
 import { useEffect } from "react";
 import { DataTable } from "react-native-paper";
 import invoiceModel from "../../models/invoices";
-
+import { Form } from "../../styles";
+import table from "../../styles/"
 export default function InvoiceTable({ route, invoices, setInvoices }) {
-    const { reload } = route.params || true;
-
-    if (reload) {
-        reloadInvoices();
-    }
-    async function reloadInvoices() {
-        setInvoices(await invoiceModel.getInvoices());
-    }
-    useEffect(() => {
-        reloadInvoices();
-    }, []);
 
     const table2 = invoices.map((invoice, index) => {
         return (
-            <DataTable.Row key={index}>
-                <DataTable.Cell numeric>{invoice.id}</DataTable.Cell>
-                <DataTable.Cell numeric>{invoice.creation_date}</DataTable.Cell>
-                <DataTable.Cell numeric>{invoice.due_date}</DataTable.Cell>
-                <DataTable.Cell numeric>{invoice.order_id}</DataTable.Cell>
-                <DataTable.Cell numeric>{invoice.name}</DataTable.Cell>
-                <DataTable.Cell numeric>{invoice.total_price}</DataTable.Cell>
+            <DataTable.Row key={index} style={Form.tableTd}>
+                <DataTable.Cell style={Form.numberCell} numeric>{invoice.id}</DataTable.Cell>
+                <DataTable.Cell style={Form.numberCell} >{invoice.creation_date}</DataTable.Cell>
+                <DataTable.Cell style={Form.numberCell}>{invoice.due_date}</DataTable.Cell>
+                <DataTable.Cell style={Form.numberCell} numeric>{invoice.order_id}</DataTable.Cell>
+                <DataTable.Cell style={Form.numberCell}>{invoice.name}</DataTable.Cell>
+                <DataTable.Cell style={Form.numberCell}numeric>{invoice.total_price}</DataTable.Cell>
             </DataTable.Row>
         );
     });
 
     return (
-        <DataTable>
-            <DataTable.Header>
+        <DataTable style={Form.table}>
+            <DataTable.Header style={Form.tableTh}>
                 <DataTable.Title>ID:</DataTable.Title>
                 <DataTable.Title>Creation date:</DataTable.Title>
                 <DataTable.Title>Due date: </DataTable.Title>
