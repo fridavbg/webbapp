@@ -3,7 +3,6 @@ import storage from "./storage";
 import Invoice from "../interfaces/invoice";
 import orderModel from "./orders";
 import Moment from "moment";
-import { Item } from "react-native-paper/lib/typescript/components/List/List";
 
 const invoices = {
     /**
@@ -32,30 +31,31 @@ const invoices = {
      */
 
     addInvoice: async function addInvoice(invoice: Partial<Invoice>) {
-        // GET ORDER BY ID
-        // let order = await orderModel.packOrder(invoice.order_id);
-        let order = await orderModel.getOrders();
-
+        // GET ORDER BY specific ID
+        let order = await orderModel.getOneOrder(invoice.order_id);
         const token = await storage.readToken();
 
-        console.log(addInvoice);
-        console.log(order);
+        let changedOrder = {
+            id: order.id,
+            name: order.name,
+            status_id: 600,
+            api_key: config.api_key,
+        };
+        await orderModel.updateOrder(changedOrder);
 
-        // let totalPrice = order.order_items.reduce((price, item)) {
-        //     return price + item.amount * item.price;
-        // }, 0);
+        let totalPrice = order.order_items.reduce((price, item) => {
+            return price + item.amount * item.price;
+        }, 0);
 
         const newInvoice = {
             ...invoice,
             order_id: invoice.order_id,
             // FIX PRICE - GET ORDER.ORDER_ITEMS
-            total_price: 100,
+            total_price: totalPrice,
             creation_date: Moment(new Date()).format("DD-MM-YYYY"),
             due_date: invoice.due_date,
             api_key: config.api_key,
         };
-        console.log("INVOICE: ");
-        console.log(invoice);
 
         try {
             await fetch(`${config.base_url}/invoices?`, {

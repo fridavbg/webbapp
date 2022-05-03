@@ -5,7 +5,7 @@ import { Base, Typography } from "../../styles";
 import DateDropDown from "./InvoiceDateDropDown";
 import OrderDropDown from "../order/OrderDropDowm";
 
-import orderModel from "../../models/orders";
+// import orderModel from "../../models/orders";
 import invoiceModel from "../../models/invoices";
 
 export default function InvoiceForm({ route, navigation }) {

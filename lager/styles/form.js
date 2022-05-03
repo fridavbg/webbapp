@@ -24,14 +24,19 @@ export const table = {
 
 export const tableTh = {
     justifyContent: "space-around",
+    alignContent: "flex-start",
+    paddingRight: 2,
 };
 
 export const tableTd = {
     borderTop: "1px solid #ccc",
-    padding: 2,
+    paddingRight: 2,
+    alignContent: "center",
 };
 
 export const numberCell = {
-    paddingRight: 2,
+    padding: 2,
     justifyContent: "flex-start",
+    alignContent: "flex-start",
 };
+

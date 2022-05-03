@@ -6,7 +6,7 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { AntDesign } from "@expo/vector-icons";
 import AppLoading from "expo-app-loading";
 import * as Font from "expo-font";
-import { Base, Typography } from "./styles";
+import { Base } from "./styles";
 
 // COMPONENTS
 import Home from "./components/incl/Home";
