@@ -13,8 +13,6 @@ export default function OrderDropDown(props) {
     const [orders, setOrders] = useState<Orders[]>([]);
     let orderHash: any = {};
 
-    // RELOAD? 
-
     useEffect(async () => {
         setOrders(await orderModel.getOrders());
     }, []);
@@ -37,7 +35,6 @@ export default function OrderDropDown(props) {
                 selectedValue={props.invoice?.order_id}
                 onValueChange={(itemValue) => {
                     props.setInvoice({ ...props.invoice, order_id: itemValue });
-                    props.setCurrentOrder[orderHash[itemValue]];
                 }}
             >
                 {orderList}

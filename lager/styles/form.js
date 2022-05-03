@@ -10,9 +10,6 @@ export const input = {
 export const table = {
     boxSizing: "border-box",
     width: "100%",
-    display: "flex",
-    overflowX: "auto",
-    borderCollapse: "collapse",
     backgroundColor: "#d9d9d9",
     shadowColor: "#000000",
     shadowOpacity: 0.8,
@@ -23,28 +20,18 @@ export const table = {
     },
     marginBottom: 12,
     borderRadius: 3,
-    whiteSpace: "nowrap",
 };
 
 export const tableTh = {
-    whiteSpace: "nowrap",
-    textAlign: "left",
-    paddingTop: 0.2,
-    paddingRight: 0.2,
-    paddingBottom: 0.8,
-    paddingLeft: 0.8,
+    justifyContent: "space-around",
 };
 
 export const tableTd = {
-    whiteSpace: "nowrap",
     borderTop: "1px solid #ccc",
-    paddingTop: 0.2,
-    paddingRight: 0.2,
-    paddingBottom: 0.8,
-    paddingLeft: 0.8,
+    padding: 2,
 };
 
 export const numberCell = {
-    textAlign: "left",
-    padding: 2,
+    paddingRight: 2,
+    justifyContent: "flex-start",
 };
