@@ -31,9 +31,10 @@ const invoices = {
      */
 
     addInvoice: async function addInvoice(invoice: Partial<Invoice>) {
+        const token = await storage.readToken();
+
         // GET ORDER BY specific ID
         let order = await orderModel.getOneOrder(invoice.order_id);
-        const token = await storage.readToken();
 
         let changedOrder = {
             id: order.id,

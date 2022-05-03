@@ -1,4 +1,4 @@
-import { ScrollView, Text } from "react-native";
+import { ScrollView, Text, View } from "react-native";
 import { useEffect } from "react";
 import { DataTable } from "react-native-paper";
 import { Form, Typography } from "../../styles";

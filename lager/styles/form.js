@@ -9,7 +9,6 @@ export const input = {
 
 export const table = {
     boxSizing: "border-box",
-    width: "100%",
     backgroundColor: "#d9d9d9",
     shadowColor: "#000000",
     shadowOpacity: 0.8,
@@ -30,13 +29,11 @@ export const tableTh = {
 
 export const tableTd = {
     borderTop: "1px solid #ccc",
-    paddingRight: 2,
-    alignContent: "center",
+    backgroundColor: "#F0F8FF",
 };
 
 export const numberCell = {
-    padding: 2,
-    justifyContent: "flex-start",
-    alignContent: "flex-start",
+    margin: 3,
+    paddingLeft: 2,
+    justifyContent: "space-around",
 };
-
