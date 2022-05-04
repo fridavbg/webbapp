@@ -22,12 +22,14 @@ export default function OrderDropDown(props) {
      * @returns Picker.Item || message
      */
 
-    const orderList = orders.filter((order) => (order.status_id === 200)).map((order, index) => {
+    const orderList = orders
+        .filter((order) => order.status_id === 200)
+        .map((order, index) => {
             orderHash[order.id] = order;
             return (
                 <Picker.Item key={index} label={order.name} value={order.id} />
             );
-    });
+        });
 
     if (orderList.length > 0) {
         return (
@@ -41,5 +43,12 @@ export default function OrderDropDown(props) {
             </Picker>
         );
     }
-    return <Text style={Typography.errMsg}>No orders has been picked</Text>;
+    return (
+        <View>
+            <Text style={Typography.errMsg}>No orders has been picked</Text>
+            <Text style={Typography.infoMsg}>
+                Go to pick in order {"\n"} to pack an order
+            </Text>
+        </View>
+    );
 }

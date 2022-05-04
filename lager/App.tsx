@@ -113,7 +113,7 @@ export default function App() {
                             {() => <Invoices setIsLoggedIn={setIsLoggedIn} />}
                         </Tab.Screen>
                     ) : (
-                        <Tab.Screen name="Logga in">
+                        <Tab.Screen name="Login/Register">
                             {() => <Auth setIsLoggedIn={setIsLoggedIn} />}
                         </Tab.Screen>
                     )}

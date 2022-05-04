@@ -57,7 +57,19 @@ export const errMsg = {
 export const label = {
     fontWeight: "bold",
     margin: 2,
-    flex: 1,
     fontSize: 20,
     fontFamily: "Arvo_Bold",
+};
+
+export const infoMsg = {
+    textAlign: "center",
+    fontSize: 15,
+    borderWidth: 3,
+    borderStyle: "solid",
+    borderRadius: 10,
+    color: "darkblue",
+    borderColor: "darkblue",
+    textTransform: "uppercase",
+    padding: 12,
+    margin: 15,
 };

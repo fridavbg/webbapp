@@ -18,7 +18,7 @@ export default function Register({ navigation }) {
             auth={auth}
             setAuth={setAuth}
             submit={createUser}
-            title="Registrera"
+            title="Register"
             navigation={navigation}
         />
     );

@@ -11,7 +11,7 @@ export default function AuthFields({
     return (
         <View style={Base.base}>
             <Text style={Typography.title}>{title}</Text>
-            <Text style={Typography.label}>E-post</Text>
+            <Text style={Typography.label}>E-mail</Text>
             <TextInput
                 style={Form.input}
                 onChangeText={(content: string) => {
@@ -21,7 +21,7 @@ export default function AuthFields({
                 keyboardType="email-address"
                 autoCapitalize="none"
             />
-            <Text style={Typography.label}>Lösenord</Text>
+            <Text style={Typography.label}>Password</Text>
             <TextInput
                 style={Form.input}
                 onChangeText={(content: string) => {
@@ -38,14 +38,14 @@ export default function AuthFields({
             >
                 <Text style={Typography.btnText}>{title}</Text>
             </TouchableOpacity>
-            {title === "Logga in" && (
+            {title === "Login" && (
                 <TouchableOpacity
                     style={Base.button}
                     onPress={() => {
                         navigation.navigate("Register");
                     }}
                 >
-                    <Text style={Typography.btnText}>Registrera istället</Text>
+                    <Text style={Typography.btnText}>Sign up</Text>
                 </TouchableOpacity>
             )}
         </View>

@@ -40,5 +40,5 @@ export default function InvoiceTable({ route, invoices, setInvoices }) {
             </DataTable>
         );
     }
-    return <Text style={Typography.errMsg}>No Invoices has been created</Text>;
+    return <Text style={Typography.errMsg}>No invoices exists</Text>;
 }
