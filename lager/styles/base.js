@@ -13,7 +13,6 @@ export const header = {
     padding: 15,
     backgroundColor: "#241623",
     alignSelf: "stretch",
-    borderRadius: 10,
 };
 
 export const listItem = {

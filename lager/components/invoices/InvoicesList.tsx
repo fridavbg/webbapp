@@ -3,8 +3,15 @@ import { useEffect } from "react";
 import { Base, Typography } from "../../styles";
 import invoiceModel from "../../models/invoices";
 import authModel from "../../models/auth";
+import InvoiceTable from "./InvoiceTable";
 
-export default function InvoicesList({ route, navigation, invoices, setInvoices }) {
+export default function InvoicesList({
+    route,
+    navigation,
+    invoices,
+    setInvoices,
+    setIsLoggedIn,
+}) {
     const { reload } = route.params || true;
 
     if (reload) {
@@ -17,71 +24,38 @@ export default function InvoicesList({ route, navigation, invoices, setInvoices 
         reloadInvoices();
     }, []);
 
-    const invoiceList = invoices.map((invoice, index) => {
-        return (
-            <Text key={index} style={Base.listItem}>
-                ID: {invoice.id} {"\n"}
-                NAMN: {invoice.name} {"\n"}
-            </Text>
-        );
-    });
+    async function logOut() {
+        authModel.logout();
+        setIsLoggedIn(false);
+    }
 
-    if (invoiceList.length > 0) {
         return (
             <ScrollView>
                 <View style={Base.container}>
-                    <Text style={Typography.title}>Faktura</Text>
-                    {invoiceList}
-                    <TouchableOpacity
-                        style={Base.button}
-                        // onPress={() => {
-                        //     navigation.navigate("InvoiceForm");
-                        // }}
-                    >
-                        <Text style={Typography.btnText}>Skapa ny faktura</Text>
-                    </TouchableOpacity>
+                    <Text style={Typography.title}>Invoice</Text>
+                    <InvoiceTable
+                        route={route}
+                        invoices={invoices}
+                        setInvoices={setInvoices}
+                    />
                     <TouchableOpacity
                         style={Base.button}
                         onPress={() => {
-                            authModel.logout();
-                            navigation.navigate("Lager", {reload : true});
+                            navigation.navigate("InvoiceForm");
                         }}
                     >
-                        <Text style={Typography.btnText}>Logga ut</Text>
+                        <Text style={Typography.btnText}>New invoice</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity
+                        style={Base.button}
+                        onPress={async () => {
+                            await logOut();
+                            navigation.navigate("Home", { reload: true });
+                        }}
+                    >
+                        <Text style={Typography.btnText}>Log out</Text>
                     </TouchableOpacity>
                 </View>
             </ScrollView>
         );
-    }
-    return (
-        <ScrollView>
-            <View style={Base.container}>
-                <Text style={Typography.title}>Faktura</Text>
-                <Text style={Typography.errMsg}>Inga fakturor</Text>
-                <TouchableOpacity
-                    style={Base.button}
-                    // onPress={() => {
-                    //     navigation.navigate("InvoiceForm");
-                    // }}
-                >
-                    <Text
-                        style={Typography.btnText}
-                    >Skapa ny faktura</Text>
-                </TouchableOpacity>
-                <TouchableOpacity
-                    style={Base.button}
-                    onPress={() => {
-                        authModel.logout();
-                        navigation.navigate("Lager", {reload : true});
-                    }}
-                >
-                    <Text
-                        style={Typography.btnText}
-                    >
-                        Logga ut
-                    </Text>
-                </TouchableOpacity>
-            </View>
-        </ScrollView>
-    );
 }

@@ -3,21 +3,26 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { useEffect, useState } from "react";
 
 import InvoicesList from "./InvoicesList";
+import InvoiceForm from "./InvoiceForm";
 
 const Stack = createNativeStackNavigator();
 
-export default function Invoices() {
+export default function Invoices({ setIsLoggedIn }) {
     const [invoices, setInvoices] = useState([]);
     return (
-        <Stack.Navigator initialRouteName="Faktura">
-            <Stack.Screen name="Fakturor">
+        <Stack.Navigator initialRouteName="Invoices">
+            <Stack.Screen name="Invoice List">
                 {(screenProps) => (
                     <InvoicesList
                         {...screenProps}
                         invoices={invoices}
                         setInvoices={setInvoices}
+                        setIsLoggedIn={setIsLoggedIn}
                     />
                 )}
+            </Stack.Screen>
+            <Stack.Screen name="InvoiceForm">
+                {(screenProps) => <InvoiceForm {...screenProps} />}
             </Stack.Screen>
         </Stack.Navigator>
     );

@@ -6,18 +6,20 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { AntDesign } from "@expo/vector-icons";
 import AppLoading from "expo-app-loading";
 import * as Font from "expo-font";
-import { Base, Typography } from "./styles";
+import { Base } from "./styles";
 
 // COMPONENTS
 import Home from "./components/incl/Home";
 import Auth from "./components/auth/Auth";
 import AuthModel from "./models/auth";
 import Stock from "./components/stock/Stock";
-import Plock from "./components/products/Pick";
+import Pick from "./components/products/Pick";
 import Deliveries from "./components/deliveries/Delivieries";
 import Invoices from "./components/invoices/Invoices";
 import Header from "./components/incl/Header";
 import Footer from "./components/incl/Footer";
+
+// NAVIGATOR
 const Tab = createBottomTabNavigator();
 
 export default function App() {
@@ -47,7 +49,7 @@ export default function App() {
         );
     }
 
-    // NAVBAR TEMA
+    // NAVBAR THEME
     const MyTheme = {
         ...DefaultTheme,
         colors: {
@@ -57,12 +59,12 @@ export default function App() {
     };
 
     const routeIcons = {
-        Lager: "home",
-        Plock: "bars",
+        Home: "home",
+        Pick: "bars",
         Stock: "book",
-        Inleveranser: "star",
+        Deliveries: "star",
         Login: "login",
-        Faktura: "paperclip",
+        Invoices: "paperclip",
     };
 
     return (
@@ -72,7 +74,8 @@ export default function App() {
                 <Tab.Navigator
                     screenOptions={({ route }) => ({
                         tabBarIcon: ({ focused, color, size }) => {
-                            let iconName = routeIcons[route.name] || "exclamation";
+                            let iconName =
+                                routeIcons[route.name] || "exclamation";
                             return (
                                 <AntDesign
                                     name={iconName}
@@ -85,10 +88,10 @@ export default function App() {
                         tabBarInactiveTintColor: "gray",
                     })}
                 >
-                    <Tab.Screen name="Lager">{() => <Home />}</Tab.Screen>
-                    <Tab.Screen name="Plock">
+                    <Tab.Screen name="Home">{() => <Home />}</Tab.Screen>
+                    <Tab.Screen name="Pick">
                         {() => (
-                            <Plock
+                            <Pick
                                 products={products}
                                 setProducts={setProducts}
                             />
@@ -102,13 +105,15 @@ export default function App() {
                             />
                         )}
                     </Tab.Screen>
-                    <Tab.Screen name="Inleveranser">
+                    <Tab.Screen name="Deliveries">
                         {() => <Deliveries />}
                     </Tab.Screen>
                     {isLoggedIn ? (
-                        <Tab.Screen name="Faktura" component={Invoices} />
+                        <Tab.Screen name="Invoices">
+                            {() => <Invoices setIsLoggedIn={setIsLoggedIn} />}
+                        </Tab.Screen>
                     ) : (
-                        <Tab.Screen name="Logga in">
+                        <Tab.Screen name="Login/Register">
                             {() => <Auth setIsLoggedIn={setIsLoggedIn} />}
                         </Tab.Screen>
                     )}

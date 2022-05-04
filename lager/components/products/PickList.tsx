@@ -52,12 +52,12 @@ export default function PickList({ route, navigation, setProducts, products }) {
                         {order.zip} {order.city}
                     </Text>
 
-                    <Text style={Typography.text}>Produkter:</Text>
+                    <Text style={Typography.text}>Books:</Text>
                     {orderItemsList}
                     {products.amount}
                     {/* BUTTON */}
                     <TouchableOpacity style={Base.button} onPress={pickOrder}>
-                        <Text style={Typography.btnText}>Plocka order</Text>
+                        <Text style={Typography.btnText}>Pick order</Text>
                     </TouchableOpacity>
                 </View>
             </ScrollView>
@@ -72,7 +72,7 @@ export default function PickList({ route, navigation, setProducts, products }) {
                     {order.zip} {order.city}
                 </Text>
 
-                <Text style={Typography.text}>Produkter:</Text>
+                <Text style={Typography.text}>Books:</Text>
                 {orderItemsList}
                 {products.amount}
                 <Text style={Typography.errMsg}>Out of stock</Text>

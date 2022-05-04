@@ -19,21 +19,12 @@ export default function Home() {
                         Alert.alert("Image of a", "Warehouse");
                     }}
                 >
-                    <Image
-                        source={warehouse}
-                        style={Base.image}
-                    />
+                    <Image source={warehouse} style={Base.image} />
                 </TouchableOpacity>
-                <Text
-                    style={Typography.text}
-                >
-                    There is no friend as loyal as a book
+                <Text style={Typography.text}>
+                    There is no friend as loyal {"\n"}as a book
                 </Text>
-                <Text
-                    style={Typography.text}
-                >
-                    {"\n"} --- Ernest Hemingway
-                </Text>
+                <Text style={Typography.text}>{"\n"} --- Ernest Hemingway</Text>
             </View>
         </ScrollView>
     );

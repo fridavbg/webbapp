@@ -11,26 +11,27 @@
 expo start
 ```
 
-# Krav - Kmom03
+# Criteria - Kmom04
 
-- [] Lista alla tidigare inleveranser, om det inte finns inleveranser visa upp ett meddelande om detta.
+1. [x] - Create form to register a user
+2. [x] - Create a form to log in with a registered user 
+3. [x] - Behind the login show the invoice view
+4. [] - Create a form that changes a order to an invoice
+        
+        * [] Create Invoice
+        * [] New invoice also marks an order with status "invoiced"
 
-- [] Gör en knapp för ‘Ny inleverans’ i list-vyn denna ska ta användaren till ett formulär.
 
-- [] Använd dina kunskapar i att göra ett lättanvänd formulär där man kan göra inleverans av en produkt.
 
-- [] Formuläret ska innehålla alla attribut för en inleverans förutom Leverans ID (id) dvs.:
+5. [] - You cant invoice an order twice
+6. [] - Create a table with information on invoices 
 
-    - Produkt (product_id)
-    - Antal (amount)
-    - Leveransdatum (delivery_date)
-    - Kommentar (comment)
-    - Använd en Picker-komponent för att välja produkten som har levererats.
+# API
 
-- [] Använd en DatePicker-komponent för att välja leveransdatum.
+[API Dokumentation](https://lager.emilfolino.se/v2)
 
-- [] När formuläret skickas ska det skapas en inleverans i API:t.
-
-- [] Lagersaldot för produkten ska ökas med den levererade mängden.
-
-- [] Länka till ditt GitHub-repo som en del av din inlämning på Canvas. Länken ska vara på formen: https://github.com/emilfolino/lager-v4.git
+* Products
+* Orders
+* Order_items
+* Deliveries
+* Invoices and Login

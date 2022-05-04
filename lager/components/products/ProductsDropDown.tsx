@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import productModel from "../../models/products";
 
 export default function ProductDropDown(props) {
-    const [products, setProducts] = useState<Product[]>([]);
+    const [products, setProducts] = useState<Products[]>([]);
     let productsHash: any = {};
 
     useEffect(async () => {

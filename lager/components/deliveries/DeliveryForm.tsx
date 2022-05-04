@@ -1,72 +1,18 @@
 import { useState } from "react";
-import {
-    ScrollView,
-    Text,
-    TextInput,
-    TouchableOpacity,
-    View,
-    Platform,
-} from "react-native";
+import { ScrollView, Text, TextInput, TouchableOpacity } from "react-native";
 import { Base, Typography, Form } from "../../styles";
-import DateTimePicker from "@react-native-community/datetimepicker";
 import Delivery from "../../interfaces/delivery";
 import deliveryModel from "../../models/deliveries";
 import productModel from "../../models/products";
 import ProductDropDown from "../products/ProductsDropDown";
-import Moment from "moment";
+import DateDropDown from "../deliveries/DeliveryDateDropDown.tsx";
 
 export default function DeliveryForm({ navigation }) {
     const [delivery, setDelivery] = useState<Partial<Delivery>>({});
     const [currentProduct, setCurrentProduct] = useState<Partial<Product>>({});
 
-    function DateDropDown(props) {
-        const [dropDownDate, setDropDownDate] = useState<Date>(new Date());
-        const [show, setShow] = useState<Boolean>(false);
-
-        const showDatePicker = () => {
-            setShow(true);
-        };
-
-        return (
-            <View>
-                {Platform.OS === "android" && (
-                    <TouchableOpacity
-                        style={Base.button}
-                        onPress={showDatePicker}
-                        onChange={(_event: any, date: any) => {
-                            setDropDownDate(date || new Date());
-                            props.setDelivery({
-                                ...props.delivery,
-                                delivery_date: date.toLocaleDateString("se-SV"),
-                            });
-                        }}
-                    >
-                        <Text style={Typography.btnText}>
-                            Visa datumväljare
-                        </Text>
-                    </TouchableOpacity>
-                )}
-                {(show || Platform.OS === "ios") && (
-                    <DateTimePicker
-                        onChange={(_event: any, date: any) => {
-                            setDropDownDate(date || new Date());
-                            props.setDelivery({
-                                ...props.delivery,
-                                delivery_date:
-                                    Moment(date).format("DD-MM-YYYY"),
-                            });
-                            setShow(false);
-                        }}
-                        value={dropDownDate}
-                    />
-                )}
-            </View>
-        );
-    }
-
     async function addDelivery(props) {
         await deliveryModel.addDelivery(delivery);
-        /// Stock uppdateras EJ
         const updatedProduct = {
             ...currentProduct,
             stock: (currentProduct.stock || 0) + (delivery.amount || 0),
@@ -79,24 +25,20 @@ export default function DeliveryForm({ navigation }) {
 
     return (
         <ScrollView style={{ ...Base.container }}>
-            <Text style={{ ...Typography.title }}>
-                Ny inleverans
-            </Text>
-            <Text style={{ ...Typography.label }}>
-                Produkt
-            </Text>
+            <Text style={{ ...Typography.title }}>New delivery</Text>
+            <Text style={{ ...Typography.label }}>Book</Text>
             <ProductDropDown
                 delivery={delivery}
                 setDelivery={setDelivery}
                 setCurrentProduct={setCurrentProduct}
             />
-            <Text style={{ ...Typography.label }}>Datum</Text>
+            <Text style={{ ...Typography.label }}>Date</Text>
             <DateDropDown
                 delivery={delivery}
                 setDelivery={setDelivery}
                 setCurrentProduct={setCurrentProduct}
             />
-            <Text style={{ ...Typography.label }}>Antal</Text>
+            <Text style={{ ...Typography.label }}>Amount</Text>
             <TextInput
                 style={{ ...Form.input }}
                 value={Number}
@@ -106,7 +48,7 @@ export default function DeliveryForm({ navigation }) {
                 value={delivery?.amount?.toString()}
                 keyboardType="numeric"
             />
-            <Text style={{ ...Typography.label }}>Kommentar</Text>
+            <Text style={{ ...Typography.label }}>Comment</Text>
             <TextInput
                 style={{ ...Form.input }}
                 value={Text}
@@ -122,7 +64,7 @@ export default function DeliveryForm({ navigation }) {
                     addDelivery({ ...delivery });
                 }}
             >
-                <Text style={{ ...Typography.btnText }}>Gör inleverans</Text>
+                <Text style={{ ...Typography.btnText }}>Make delivery</Text>
             </TouchableOpacity>
         </ScrollView>
     );

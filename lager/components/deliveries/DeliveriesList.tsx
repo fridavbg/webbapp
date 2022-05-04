@@ -35,7 +35,7 @@ export default function DeliveriesList({ route, navigation }) {
         return (
             <ScrollView>
                 <View style={Base.container}>
-                    <Text style={Typography.title}>Inleveranser</Text>
+                    <Text style={Typography.title}>Deliveries</Text>
                     {listOfDeliveries}
                     <TouchableOpacity
                         style={Base.button}
@@ -43,9 +43,7 @@ export default function DeliveriesList({ route, navigation }) {
                             navigation.navigate("DeliveryForm");
                         }}
                     >
-                        <Text style={Typography.btnText}>
-                            Skapa ny inleverans
-                        </Text>
+                        <Text style={Typography.btnText}>New delivery</Text>
                     </TouchableOpacity>
                 </View>
             </ScrollView>

@@ -5,9 +5,11 @@ import storage from "./storage";
 const auth = {
     loggedIn: async function loggedIn() {
         const token = await storage.readToken();
-        const twentyFourHours = 1000 * 60 * 60 * 24;
-        const notExpired = (new Date().getTime() - token.date) < twentyFourHours;
-
+        let notExpired;
+        if (token) {
+            const twentyFourHours = 1000 * 60 * 60 * 24;
+            notExpired = new Date().getTime() - token.date < twentyFourHours;
+        }
         return token && notExpired;
     },
     login: async function login(email: string, password: string) {
@@ -20,11 +22,14 @@ const auth = {
             method: "POST",
             body: JSON.stringify(data),
             headers: {
-                'content-type': 'application/json'
+                "content-type": "application/json",
             },
         });
         const result = await response.json();
 
+        // CHECK USER OBJECT AT LOGIN
+        console.log(result);
+        
         await storage.storeToken(result.data.token);
 
         return result.data.message;
@@ -39,7 +44,7 @@ const auth = {
             method: "POST",
             body: JSON.stringify(data),
             headers: {
-                'content-type': 'application/json'
+                "content-type": "application/json",
             },
         });
 
@@ -47,7 +52,7 @@ const auth = {
     },
     logout: async function logout() {
         await storage.deleteToken();
-    }
+    },
 };
 
 export default auth;
