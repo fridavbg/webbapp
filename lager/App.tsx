@@ -10,6 +10,7 @@ import { Base } from "./styles";
 
 // COMPONENTS
 import Home from "./components/incl/Home";
+import Test from "./components/incl/Test";
 import Auth from "./components/auth/Auth";
 import AuthModel from "./models/auth";
 import Stock from "./components/stock/Stock";
@@ -65,6 +66,7 @@ export default function App() {
         Deliveries: "star",
         Login: "login",
         Invoices: "paperclip",
+        Test: "questioncircleo",
     };
 
     return (
@@ -117,6 +119,7 @@ export default function App() {
                             {() => <Auth setIsLoggedIn={setIsLoggedIn} />}
                         </Tab.Screen>
                     )}
+                    <Tab.Screen name="Test">{() => <Test />}</Tab.Screen>
                 </Tab.Navigator>
                 <Footer />
             </NavigationContainer>
