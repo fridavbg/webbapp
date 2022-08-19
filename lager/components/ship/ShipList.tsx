@@ -13,9 +13,9 @@ export default function ShipList({ navigation }) {
                         order: {
                             "id": 1,
                             "name": "Frida Persson",
-                            "address": "Carrer de Baluard 11",
-                            "zip": "08005",
-                            "country": "Sweden",
+                            "address": "Carrer del Baluard 11",
+                            "zip": "08003",
+                            "city": "Barcelona",
                             "status": "Packad",
                             "status_id": "200"
                         }
