@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { ScrollView, View, Text } from "react-native";
 import config from "../../config/config.json";
-
+import { getCoordinates } from "../../models/nominatim"
 import { Base, Typography } from "../../styles";
 import MapView from "react-native-maps";
 import { Marker } from "react-native-maps";
