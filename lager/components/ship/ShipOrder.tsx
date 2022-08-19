@@ -31,6 +31,31 @@ export default function ShipOrder({ route }) {
         })();
     }, []);
 
+    useEffect(() => {
+        (async () => {
+            const { status } =
+                await Location.requestForegroundPermissionsAsync();
+
+            if (status !== "granted") {
+                setErrorMessage("Permission to access location was denied");
+                return;
+            }
+
+            const currentLocation = await Location.getCurrentPositionAsync({});
+
+            setLocationMarker(
+                <Marker
+                    coordinate={{
+                        latitude: currentLocation.coords.latitude,
+                        longitude: currentLocation.coords.longitude,
+                    }}
+                    title="Min plats"
+                    pinColor="blue"
+                />
+            );
+        })();
+    }, []);
+
     return (
         <View style={Base.container}>
             <Text style={Typography.header2}>Skicka order</Text>
@@ -45,6 +70,7 @@ export default function ShipOrder({ route }) {
                     }}
                 >
                     {marker}
+                    {locationMarker}
                 </MapView>
             </View>
         </View>
