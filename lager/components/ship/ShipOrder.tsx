@@ -1,4 +1,4 @@
-import { View, Text } from "react-native";
+import { View, Text, StyleSheet } from "react-native";
 import { Base, Typography, Map } from "../../styles";
 import MapView from "react-native-maps";
 import { Marker } from "react-native-maps";
@@ -17,18 +17,16 @@ export default function ShipOrder({ route }) {
                     longitude: 15.5869,
                     latitudeDelta: 0.1,
                     longitudeDelta: 0.1,
-                }}
-            />
+                }}>
             <Marker
                 coordinate={{ latitude: 56.17, longitude: 15.59 }}
                 title="Min första markör"
-            />
+                />
+                </MapView>
         </View>
     </View>
     );
 }
-
-import { StyleSheet } from "react-native";
 
 const styles = StyleSheet.create({
     container: {

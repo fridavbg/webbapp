@@ -16,40 +16,22 @@ export default function Test() {
             .then((result) => setOrders(result.data));
     }, []);
 
-    // const list = orders.map((order, index) => (
-    //     <Text key={index}>{order.address}</Text>
-    // ));
+    const list = orders.map((order, index) => (
+        <Text key={index}>{order.address}</Text>
+    ));
 
     return (
-        // <ScrollView style={Base.container}>
-        //     <View style={Base.center}>
-        //         <Text style={Typography.title}>Fridas Personal Playground</Text>
-        //         <Text style={Typography.text}>
-        //             There is no friend as loyal {"\n"}as a book
-        //         </Text>
-        //         <Text style={Typography.text}>
-        //             {"\n"} Something to try out goes here
-        //         </Text>
-        //     </View>
-        // </ScrollView>
-        <View style={Base.container}>
-            <Text style={Typography.header2}>Skicka order</Text>
-            <View style={styles.container}>
-                <MapView
-                    style={styles.map}
-                    initialRegion={{
-                        latitude: 56.1612,
-                        longitude: 15.5869,
-                        latitudeDelta: 0.1,
-                        longitudeDelta: 0.1,
-                    }}
-                />
-                <Marker
-                    coordinate={{ latitude: 56.17, longitude: 15.59 }}
-                    title="Min första markör"
-                />
+        <ScrollView style={Base.container}>
+            <View style={Base.center}>
+                <Text style={Typography.title}>Fridas Personal Playground</Text>
+                <Text style={Typography.text}>
+                    There is no friend as loyal {"\n"}as a book
+                </Text>
+                <Text style={Typography.text}>
+                    {"\n"} Something to try out goes here
+                </Text>
             </View>
-        </View>
+        </ScrollView>
     );
 }
 
