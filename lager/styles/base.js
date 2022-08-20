@@ -4,6 +4,10 @@ export const container = {
     flex: 1,
 };
 
+export const wrapper = {
+    backgroundColor: "#4E6766",
+};
+
 export const center = {
     alignItems: "center",
     justifyContent: "center",

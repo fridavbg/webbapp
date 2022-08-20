@@ -6,13 +6,6 @@ export const header1 = {
     textTransform: "uppercase",
 };
 
-export const footer = {
-    color: "#fff",
-    fontSize: 15,
-    textAlign: "center",
-    fontFamily: "Arvo_Italic",
-};
-
 export const header2 = {
     padding: 15,
     alignSelf: "stretch",
@@ -72,4 +65,11 @@ export const infoMsg = {
     textTransform: "uppercase",
     padding: 12,
     margin: 15,
+};
+
+export const footer = {
+    color: "#fff",
+    fontSize: 15,
+    textAlign: "center",
+    fontFamily: "Arvo_Italic",
 };

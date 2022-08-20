@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import * as Location from "expo-location";
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet, ScrollView } from "react-native";
 import { Base, Typography, Map } from "../../styles";
 import MapView from "react-native-maps";
 import { Marker } from "react-native-maps";
@@ -58,9 +58,21 @@ export default function ShipOrder({ route }) {
 
     return (
         <View style={Base.container}>
-            <Text style={Typography.header2}>{order.name}</Text>
-            <Text style={Typography.text}>{order.address}</Text>
-            <Text style={Typography.text}>{order.city}</Text>
+            <View style={Base.wrapper}>
+                <Text style={Typography.text}>
+                    Namn: {order.name}
+                    {"\n"}
+                    Order status: {order.status_id}
+                    {"\n"}
+                    Order id: {order.id}
+                    {"\n"}
+                    Order address: {order.address}
+                    {"\n"}
+                    Post kod: {order.zip}
+                    {"\n"}
+                    Stad: {order.city}
+                </Text>
+            </View>
             <View style={styles.container}>
                 <MapView
                     style={styles.map}
