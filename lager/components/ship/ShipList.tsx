@@ -1,15 +1,15 @@
+import { View, ScrollView, Text, TouchableOpacity } from "react-native";
 import { useState, useEffect } from "react";
-import { View, Text, TouchableOpacity, ScrollView } from "react-native";
 import { Base, Typography } from "../../styles";
 
-import orderModel from '../../models/orders';
+import orderModel from "../../models/orders";
 
-export default function OrderList({ route, navigation }) {
+export default function ShipList({ route, navigation }) {
     const { reload } = route.params || true;
     const [allOrders, setAllOrders] = useState([]);
 
     if (reload) {
-        console.log('RELOAD'); 
+        console.log("RELOAD");
         reloadOrders();
     }
     async function reloadOrders() {
@@ -20,14 +20,14 @@ export default function OrderList({ route, navigation }) {
     }, []);
 
     const listOfOrders = allOrders
-        .filter((order) => order.status === "Ny")
+        .filter((order) => order.status === "Packad")
         .map((order, index) => {
             return (
                 <TouchableOpacity
                     style={Base.button}
                     key={index}
                     onPress={() => {
-                        navigation.navigate("Details", {
+                        navigation.navigate("Order", {
                             order: order,
                         });
                     }}
@@ -35,7 +35,7 @@ export default function OrderList({ route, navigation }) {
                     <Text style={Typography.btnText}>
                         ID: {order.id} {"\n"}
                         NAME: {order.name} {"\n"}
-                        STATUS: { order.status }
+                        STATUS: {order.status}
                     </Text>
                 </TouchableOpacity>
             );
@@ -43,10 +43,8 @@ export default function OrderList({ route, navigation }) {
 
     return (
         <ScrollView>
-            <View>
-                <Text style={Typography.title}>Orders to be picked</Text>
-                {listOfOrders}
-            </View>
+            <Text style={Typography.title}>Orders to be shipped</Text>
+            <View>{listOfOrders}</View>
         </ScrollView>
     );
 }

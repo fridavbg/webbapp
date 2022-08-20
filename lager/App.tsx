@@ -3,20 +3,22 @@ import { StatusBar } from "expo-status-bar";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { NavigationContainer, DefaultTheme } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { AntDesign } from "@expo/vector-icons";
+import { AntDesign, MaterialIcons } from "@expo/vector-icons";
 import AppLoading from "expo-app-loading";
 import * as Font from "expo-font";
 import { Base } from "./styles";
 
 // COMPONENTS
+import Header from "./components/incl/Header";
 import Home from "./components/incl/Home";
+import Test from "./components/incl/Test";
 import Auth from "./components/auth/Auth";
 import AuthModel from "./models/auth";
 import Stock from "./components/stock/Stock";
 import Pick from "./components/products/Pick";
 import Deliveries from "./components/deliveries/Delivieries";
 import Invoices from "./components/invoices/Invoices";
-import Header from "./components/incl/Header";
+import Ship from "./components/ship/Ship";
 import Footer from "./components/incl/Footer";
 
 // NAVIGATOR
@@ -65,6 +67,8 @@ export default function App() {
         Deliveries: "star",
         Login: "login",
         Invoices: "paperclip",
+        Ship: "car",
+        Test: "questioncircleo",
     };
 
     return (
@@ -108,6 +112,8 @@ export default function App() {
                     <Tab.Screen name="Deliveries">
                         {() => <Deliveries />}
                     </Tab.Screen>
+                    <Tab.Screen name="Ship">{() => <Ship />}</Tab.Screen>
+
                     {isLoggedIn ? (
                         <Tab.Screen name="Invoices">
                             {() => <Invoices setIsLoggedIn={setIsLoggedIn} />}
@@ -117,6 +123,7 @@ export default function App() {
                             {() => <Auth setIsLoggedIn={setIsLoggedIn} />}
                         </Tab.Screen>
                     )}
+                    <Tab.Screen name="Test">{() => <Test />}</Tab.Screen>
                 </Tab.Navigator>
                 <Footer />
             </NavigationContainer>

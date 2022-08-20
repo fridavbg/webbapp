@@ -16,10 +16,10 @@ expo start
 1. [x] - Create form to register a user
 2. [x] - Create a form to log in with a registered user 
 3. [x] - Behind the login show the invoice view
-4. [] - Create a form that changes a order to an invoice
+4. [x] - Create a form that changes a order to an invoice
         
-        * [] Create Invoice
-        * [] New invoice also marks an order with status "invoiced"
+        * [x] Create Invoice
+        * [x] New invoice also marks an order with status "invoiced"
 
 
 
