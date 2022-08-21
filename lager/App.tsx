@@ -3,12 +3,10 @@ import { StatusBar } from "expo-status-bar";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { NavigationContainer, DefaultTheme } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { AntDesign } from "@expo/vector-icons";
+import { AntDesign, MaterialIcons } from "@expo/vector-icons";
 import AppLoading from "expo-app-loading";
 import * as Font from "expo-font";
 import { Base } from "./styles";
-import FlashMessage from "react-native-flash-message";
-
 
 // COMPONENTS
 import Header from "./components/incl/Header";
@@ -130,7 +128,6 @@ export default function App() {
                 <Footer />
             </NavigationContainer>
             <StatusBar style="auto" />
-            <FlashMessage position="top" />
         </SafeAreaView>
     );
 }
