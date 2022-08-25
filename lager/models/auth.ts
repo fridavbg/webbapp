@@ -27,7 +27,6 @@ const auth = {
         });
         const result = await response.json();
 
-        
         await storage.storeToken(result.data.token);
 
         if (Object.prototype.hasOwnProperty.call(result, 'errors')) {
@@ -39,7 +38,7 @@ const auth = {
         }
 
         return {
-            title: "Inloggning",
+            title: "Inloggad",
             message: result.data.message,
             type: "success",
         };
