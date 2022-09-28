@@ -16,6 +16,7 @@ export default function StockList({ route, products, setProducts }) {
     useEffect(() => {
         reloadProducts();
     }, []);
+    
     const productList = products.map((product, index) => (
         <Text key={index} style={Base.listItem}>
             ID: {"\n"} {product.id} {"\n"}

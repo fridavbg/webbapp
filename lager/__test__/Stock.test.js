@@ -1,14 +1,11 @@
 import { render } from "@testing-library/react-native";
-import MockedNavigator from "./MockedNavigator";
-import Stock from "../components/stock/Stock";
+import Header from "../components/incl/Header";
 
-jest.mock("react-native/Libraries/Animated/NativeAnimatedHelper");
-// jest.mock("../components/stock/StockList", () => "StockList");
+jest.mock("../components/stock/StockList.tsx", () => "StockList");
 
-it("should render correctly", async () => {
-    const { getByText } = render(<MockedNavigator component={Stock} />);
+test("header should exist containing text Warehouse App", async () => {
+    const { getByText } = render(<Header />);
+    const header = await getByText("Warehouse App");
 
-    // const header = await getByText("Inventory");
-
-    // expect(header).toBeDefined();
+    expect(header).toBeDefined();
 });
