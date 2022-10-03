@@ -1,15 +1,15 @@
 import { useState, useEffect } from "react";
-import { View, Text, TouchableOpacity, ScrollView } from "react-native";
+import { Text, TouchableOpacity, ScrollView } from "react-native";
 import { Base, Typography } from "../../styles";
 
-import orderModel from '../../models/orders';
+import orderModel from "../../models/orders";
 
 export default function OrderList({ route, navigation }) {
     const { reload } = route.params || true;
     const [allOrders, setAllOrders] = useState([]);
 
     if (reload) {
-        console.log('RELOAD'); 
+        console.log("RELOAD");
         reloadOrders();
     }
     async function reloadOrders() {
@@ -35,18 +35,11 @@ export default function OrderList({ route, navigation }) {
                     <Text style={Typography.btnText}>
                         ID: {order.id} {"\n"}
                         NAME: {order.name} {"\n"}
-                        STATUS: { order.status }
+                        STATUS: {order.status}
                     </Text>
                 </TouchableOpacity>
             );
         });
 
-    return (
-        <ScrollView>
-            <View>
-                <Text style={Typography.title}>Orders to be picked</Text>
-                {listOfOrders}
-            </View>
-        </ScrollView>
-    );
+    return <ScrollView>{listOfOrders}</ScrollView>;
 }
