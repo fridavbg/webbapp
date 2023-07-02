@@ -1,7 +1,7 @@
 import { View, Text, TextInput, Button, TouchableOpacity } from "react-native";
 import { showMessage } from "react-native-flash-message";
 import { Typography, Form, Base } from "../../styles";
-import { text } from "../../styles/typograhy";
+import { text } from "../../styles/incl/typography";
 
 export default function AuthFields({
     auth,

@@ -26,7 +26,6 @@ export const listItem = {
     padding: 15,
     margin: 10,
     color: "#ACD7EC",
-    fontFamily: "Arvo",
     textAlign: "center",
     backgroundColor: "#241623",
 };
@@ -38,7 +37,6 @@ export const button = {
     backgroundColor: "#ACD7EC",
     marginBottom: 15,
     padding: 8,
-    fontFamily: "Arvo",
 };
 
 export const image = {
