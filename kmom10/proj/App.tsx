@@ -1,28 +1,31 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import Dogs from './src/components/Dogs';
+import { NavigationContainer, DefaultTheme } from "@react-navigation/native";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { Body } from "./src/styles";
+
+// COMPONENTS
+import Header from './src/incl/Header'
+import Main from './src/incl/Main';
+import Footer from './src/incl/Footer';
+
+    // NAVBAR THEME
+    const MyTheme = {
+      ...DefaultTheme,
+      colors: {
+          ...DefaultTheme.colors,
+          background: "#4E6766",
+      },
+  };
 
 export default function App() {
   return (
-    <SafeAreaView style={styles.container}>
-      <View style={styles.base}>
-        <Text style={{color: '#33c', fontSize: 24}}>Match and Adopt a Dog</Text>
-        <Dogs />
-        <StatusBar style="auto" />
-      </View>
+    <SafeAreaView style={Body.container}>
+      <NavigationContainer theme={ MyTheme}>
+        <Header/>
+        <Main />
+        <Footer/>
+      </NavigationContainer>
     </SafeAreaView>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-  base: {
-    flex: 1,
-    backgroundColor: '#fff',
-    padding: 12,
-    margin: 15,
-  }
-});
