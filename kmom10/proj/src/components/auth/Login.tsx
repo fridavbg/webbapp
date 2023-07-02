@@ -29,11 +29,11 @@ export default function Login({navigation, setIsLoggedIn}) {
 
     return (
         <AuthFields
-            auth={auth}
-            setAuth={setAuth}
-            submit={doLogin}
-            title="Login"
-            navigation={navigation}
-        />
+        auth={auth}
+        setAuth={setAuth}
+        submit={doLogin}
+        title="Login"
+        navigation={navigation}
+    />
     );
 };
