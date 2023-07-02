@@ -1,5 +1,4 @@
 export const container = {
-    padding: 18,
     backgroundColor: "darkgrey",
     flex: 1,
 };
@@ -46,4 +45,5 @@ export const image = {
     width: 300,
     height: 300,
     borderRadius: 10,
+    marginBottom: 20,
 };

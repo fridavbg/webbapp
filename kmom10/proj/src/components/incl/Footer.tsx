@@ -1,6 +1,6 @@
 import React from "react";
 import { View, Text } from "react-native";
-import { Base, Typography } from '../styles';
+import { Base, Typography } from '../../styles';
 
 
 export default function Footer() {

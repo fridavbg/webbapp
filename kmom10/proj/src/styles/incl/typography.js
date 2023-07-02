@@ -22,7 +22,7 @@ export const title = {
 
 export const text = {
     textAlign: "center",
-    fontSize: 16,
+    fontSize: 30,
     color: "#ACD7EC",
     padding: 15,
     paddingTop: 30,
